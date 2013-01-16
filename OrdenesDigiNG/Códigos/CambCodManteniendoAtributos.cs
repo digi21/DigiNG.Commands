@@ -36,7 +36,7 @@ namespace Ordenes.Códigos
 
                 // Si el nombre de tabla del código nuevo coincide con el nombre de tabla del código antiguo, mantenemos tanto el número de tabla
                 // como el número de registro. Si no es así, creamos el nuevo código sin asignar ni tabla ni registro.
-                if (DigiNG.DigiTab[nuevoCódigo].Table == DigiNG.DigiTab[nombreCódigoActivo].Table)
+                if (DigiNG.DigiTab[nuevoCódigo].Table == DigiNG.DigiTab[entidadClonada.Codes[i].Name].Table)
                     entidadClonada.Codes[i] = new Code(nuevoCódigo, entidadClonada.Codes[i].Table, entidadClonada.Codes[i].Id);
                 else
                     entidadClonada.Codes[i] = new Code(nuevoCódigo);

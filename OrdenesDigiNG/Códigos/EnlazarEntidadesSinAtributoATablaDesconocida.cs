@@ -20,6 +20,12 @@ namespace Ordenes.Códigos
             try
             {
                 var diccionarioNúmerosDeTabla = DigiNG.DrawingFile.DatabaseTables;
+                if (0 == diccionarioNúmerosDeTabla.Count)
+                {
+                    Digi3D.Music(MusicType.Error);
+                    Digi3D.ShowBallon("enlazar_entidades_sin_atributo_a_tabla_desconocida", "No está conectado a la base de datos", 2);
+                    return;
+                }
 
                 List<Entity> entidadesAAñadir = new List<Entity>();
                 List<Entity> entidadesAEliminar = new List<Entity>();
