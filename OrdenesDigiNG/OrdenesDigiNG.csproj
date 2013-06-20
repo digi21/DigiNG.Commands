@@ -8,8 +8,8 @@
     <ProjectGuid>{6991C43C-E51A-485F-B6DB-A5798C4FB4AE}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Ordenes</RootNamespace>
-    <AssemblyName>Ordenes</AssemblyName>
+    <RootNamespace>OrdenesDigiNG</RootNamespace>
+    <AssemblyName>OrdenesDigiNG</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -33,6 +33,8 @@
   <ItemGroup>
     <Reference Include="Digi21.DigiNG, Version=10.0.0.1, Culture=neutral, PublicKeyToken=82292917b7a6e156, processorArchitecture=x86" />
     <Reference Include="Digi21.DigiNG.Plugin, Version=10.0.0.1, Culture=neutral, PublicKeyToken=82292917b7a6e156, processorArchitecture=x86" />
+    <Reference Include="Digi21.DigiNG.Topology, Version=10.0.0.1, Culture=neutral, PublicKeyToken=82292917b7a6e156, processorArchitecture=x86" />
+    <Reference Include="Digi21.Utilities, Version=2011.1.4918.36001, Culture=neutral, PublicKeyToken=82292917b7a6e156, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Windows.Forms" />
@@ -48,19 +50,11 @@
     <Compile Include="Códigos\CopiarTablaRegistro.cs" />
     <Compile Include="Modelo de datos\EliminarEntidadesAreaPequeña.cs" />
     <Compile Include="Códigos\EnlazarEntidadesSinAtributoATablaDesconocida.cs" />
+    <Compile Include="Operaciones con entidades\Recortar.cs" />
+    <Compile Include="Operaciones con entidades\RecortarPoligono.cs" />
+    <Compile Include="Operaciones con entidades\TramificaInsertandoEntidadSeleccionada.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Modelo de datos\SustituyeAreaPorPuntual.cs" />
-    <Compile Include="Properties\Settings.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-      <DependentUpon>Settings.settings</DependentUpon>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\UtilidadesDigi\UtilidadesDigi.csproj">
-      <Project>{EF973B15-E68D-4FA1-9454-6433A895D63A}</Project>
-      <Name>UtilidadesDigi</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

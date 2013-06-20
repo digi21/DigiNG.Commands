@@ -6,10 +6,16 @@ using Digi21.DigiNG;
 using Digi21.DigiNG.Entities;
 using Digi21.DigiNG.Plugin.Command;
 using Digi21.Math;
+using Digi21.DigiNG.Plugin.Shell;
 
 namespace Ordenes.Códigos
 {
+    /// <summary>
+    /// Esta orden solicita que se seleccione una entidad origen y una destino. Copiará el el número de tabla y registro del código de la entidad origen en la destino
+    /// sin modificar el nombre del código de la entidad origen.
+    /// </summary>
     [Command(Name = "copiar_tabla_registro")]
+    [CommandInMenu("Copiar tabla/registro de código manteniendo nombre", MenuItemGroup.EditGroup6)]
     public class CopiarTablaRegistro : Command
     {
         private Entity entidadOrigen = null;

@@ -5,6 +5,7 @@ using Digi21.Digi3D;
 using Digi21.DigiNG;
 using Digi21.DigiNG.Entities;
 using Digi21.DigiNG.Plugin.Command;
+using Digi21.DigiNG.Plugin.Shell;
 
 namespace Ordenes.Códigos
 {
@@ -13,6 +14,7 @@ namespace Ordenes.Códigos
     /// destino coincide con el nombre de tabla del código original, se mantienen tanto el número de tabla como el número de registro.
     /// </summary>
     [Command(Name = "camb_cod_manteniendo_atributos")]
+    [CommandInMenu("Cambia código manteniendo atributos", MenuItemGroup.EditGroup6)]
     public class CambCodManteniendoAtributos : Command
     {
         public CambCodManteniendoAtributos()

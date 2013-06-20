@@ -4,7 +4,7 @@ using Digi21.Digi3D;
 using Digi21.DigiNG;
 using Digi21.DigiNG.Entities;
 using Digi21.DigiNG.Plugin.Command;
-using UtilidadesDigi;
+using Digi21.Utilities;
 
 namespace Ordenes.ModeloDeDatos
 {

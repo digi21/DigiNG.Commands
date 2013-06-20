@@ -1,4 +1,4 @@
-Implementa un conjunto de órdenes para añádir funcionalidad a Digi3D.NET.
+Implementa un conjunto de órdenes para añadir funcionalidad a Digi3D.NET.
 
 Las órdenes están agrupadas en carpetas en función de su funcionalidad:
 
