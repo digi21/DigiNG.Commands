@@ -7,7 +7,6 @@ using Digi21.DigiNG;
 using Digi21.DigiNG.Entities;
 using Digi21.DigiNG.Topology;
 using Digi21.Utilities;
-using UtilidadesDigi;
 using Digi21.DigiNG.Plugin.Shell;
 
 namespace Ordenes.OperacionesConEntidades

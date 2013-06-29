@@ -73,7 +73,7 @@ namespace Ordenes.OperacionesConEntidades
         void SolicitaSeleccionaEntidad()
         {
             if (entidadADividir == null)
-                Digi3D.StatusBar.Text = "Selecciona la línea cerrada o polígono a dividir";
+                Digi3D.StatusBar.Text = "Selecciona el polígono a recortar";
             else
                 Digi3D.StatusBar.Text = "Selecciona la línea de corte";
         }
