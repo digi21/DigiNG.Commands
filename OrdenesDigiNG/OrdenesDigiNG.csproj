@@ -46,6 +46,7 @@
     <Compile Include="Códigos\CopiarTablaRegistro.cs" />
     <Compile Include="Modelo de datos\EliminarEntidadesAreaPequeña.cs" />
     <Compile Include="Códigos\EnlazarEntidadesSinAtributoATablaDesconocida.cs" />
+    <Compile Include="Operaciones con entidades\LineaAPolígono.cs" />
     <Compile Include="Operaciones con entidades\Recortar.cs" />
     <Compile Include="Operaciones con entidades\RecortarPoligono.cs" />
     <Compile Include="Operaciones con entidades\TramificaInsertandoEntidadSeleccionada.cs" />
