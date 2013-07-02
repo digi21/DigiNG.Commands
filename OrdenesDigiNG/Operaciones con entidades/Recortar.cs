@@ -31,6 +31,7 @@ namespace Ordenes.OperacionesConEntidades
 
                 var entidadesRecortables = (from entidad in DigiNG.DrawingFile
                                             where entidad is IClippable
+                                            where !entidad.Deleted
                                             where entidad.AlgúnCódigoVisible()
                                             where Window2D.Intersects(límite, entidad)
                                             select entidad as IClippable).ToList();
