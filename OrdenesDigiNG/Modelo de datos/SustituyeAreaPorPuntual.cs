@@ -106,6 +106,9 @@ namespace Ordenes.ModeloDeDatos
         /// <param name="e"></param>
         void DigiNG_AddingEntity(object sender, AddingEntityEventArgs e)
         {
+            if (!SustituirOEliminarEntidadesPorArea.Sustituir)
+                return;
+
             if (!(e.Entity is ReadOnlyLine))
                 return;
 
@@ -118,7 +121,7 @@ namespace Ordenes.ModeloDeDatos
             {
                 if (línea.TieneElCódigo(nombreCódigo))
                 {
-                    if (Math.Abs(línea.Area) < códigos[nombreCódigo].Area)
+                    if (Math.Abs(DigiNG.GeographicCalculator.CalculateArea(línea)) < códigos[nombreCódigo].Area)
                     {
                         Digi3D.ShowBallon(
                             "Sustitución de área por puntual",

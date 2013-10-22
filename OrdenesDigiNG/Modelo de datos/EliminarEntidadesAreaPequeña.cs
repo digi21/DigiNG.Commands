@@ -91,6 +91,9 @@ namespace Ordenes.ModeloDeDatos
         /// <param name="e"></param>
         void DigiNG_AddingEntity(object sender, AddingEntityEventArgs e)
         {
+            if (!SustituirOEliminarEntidadesPorArea.Sustituir)
+                return;
+
             if (!(e.Entity is ReadOnlyLine))
                 return;
 
@@ -103,7 +106,7 @@ namespace Ordenes.ModeloDeDatos
             {
                 if (línea.TieneElCódigo(nombreCódigo))
                 {
-                    if (línea.Area < códigos[nombreCódigo])
+                    if (System.Math.Abs(DigiNG.GeographicCalculator.CalculateArea(línea)) < códigos[nombreCódigo])
                     {
                         Digi3D.ShowBallon(
                             "Entidad descartada",
