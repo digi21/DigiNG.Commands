@@ -121,14 +121,15 @@ namespace Ordenes.ModeloDeDatos
             {
                 if (línea.TieneElCódigo(nombreCódigo))
                 {
-                    if (Math.Abs(DigiNG.GeographicCalculator.CalculateArea(línea)) < códigos[nombreCódigo].Area)
+                    var area = Math.Abs(DigiNG.GeographicCalculator.CalculateArea(línea));
+                    if (area < códigos[nombreCódigo].Area)
                     {
                         Digi3D.ShowBallon(
                             "Sustitución de área por puntual",
                             string.Format("Se va a sustituir su área con código {0} por un puntual con código {1} porque su área {2} es inferior a {3}", 
                                 nombreCódigo, 
                                 códigos[nombreCódigo].CódigoPunto,
-                                línea.Area, 
+                                area, 
                                 códigos[nombreCódigo].Area),
                             2);
 

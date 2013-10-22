@@ -106,11 +106,13 @@ namespace Ordenes.ModeloDeDatos
             {
                 if (línea.TieneElCódigo(nombreCódigo))
                 {
-                    if (System.Math.Abs(DigiNG.GeographicCalculator.CalculateArea(línea)) < códigos[nombreCódigo])
+                    var area = System.Math.Abs(DigiNG.GeographicCalculator.CalculateArea(línea));
+
+                    if (area < códigos[nombreCódigo])
                     {
                         Digi3D.ShowBallon(
                             "Entidad descartada",
-                            string.Format("Se descartó la línea con código {0} porque su área {1} es inferior a {2}", nombreCódigo, línea.Area, códigos[nombreCódigo]),
+                            string.Format("Se descartó la línea con código {0} porque su área {1} es inferior a {2}", nombreCódigo, area, códigos[nombreCódigo]),
                             2);
 
                         DigiNG.DrawEntity(e.Entity, DrawingMode.Hide);
