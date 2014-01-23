@@ -8,7 +8,7 @@ using Digi21.DigiNG.Entities;
 using Digi21.Utilities;
 using Digi21.DigiNG;
 
-namespace OrdenesDigiNG.Operaciones_con_entidades
+namespace OrdenesDigiNG.OperacionesConEntidades
 {
     [Command(Name="linea_a_poligono", Description="Transforma líneas en polígonos. Es necesario introducir como parámetros los códigos de las líneas (cerradas) a transformar en polígono. Se pueden poner varios parámetros y además se admiten comodines.")]
     public class LineaAPolígono : Command
