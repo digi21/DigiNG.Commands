@@ -57,6 +57,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Modelo de datos\SustituyeAreaPorPuntual.cs" />
     <Compile Include="SustituyeAtributo.cs" />
+    <Compile Include="UnirPolígonos.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\..\..\..\Digi3D.NET\Progsh\src\Digi21.DigiNG.Plugin\Digi21.DigiNG.Plugin.vcxproj">
