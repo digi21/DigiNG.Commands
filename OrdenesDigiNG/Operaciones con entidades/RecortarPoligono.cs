@@ -65,7 +65,7 @@ namespace Ordenes.OperacionesConEntidades
         void RecortarPoligono_DataUp(object sender, Digi21.Math.Point3DEventArgs e)
         {
             if (entidadADividir == null)
-                DigiNG.SelectEntity(e.Coordinates, entidad => DigiNG.DrawingFile.Contains(entidad) && entidad is ReadOnlyPolygon);
+                DigiNG.SelectEntity(e.Coordinates, entidad => DigiNG.DrawingFile.Contains(entidad) && (entidad is ReadOnlyPolygon || entidad is ReadOnlyLine && ((ReadOnlyLine)entidad).Closed));
             else
                 DigiNG.SelectEntity(e.Coordinates, entidad => entidad is ReadOnlyLine);
         }
