@@ -11,19 +11,19 @@ using Digi21.DigiNG.Plugin.Shell;
 
 namespace Ordenes.OperacionesConEntidades
 {
-    [Command(Name = "recortar")]
-    [CommandInMenu("Recortar", MenuItemGroup.EditGroup4)]
-    public class Recortar : Command
+    [Command(Name = "cortar")]
+    [CommandInMenu("Cortar", MenuItemGroup.EditGroup4)]
+    public class Cortar : Command
     {
-        public Recortar()
+        public Cortar()
         {
-            this.Initialize += new EventHandler(Recortar_Initialize);
-            this.SetFocus += new EventHandler(Recortar_SetFocus);
-            this.DataUp += new EventHandler<Digi21.Math.Point3DEventArgs>(Recortar_DataUp);
-            this.EntitySelected += new EventHandler<EntitySelectedEventArgs>(Recortar_EntitySelected);
+            this.Initialize += new EventHandler(Cortar_Initialize);
+            this.SetFocus += new EventHandler(Cortar_SetFocus);
+            this.DataUp += new EventHandler<Digi21.Math.Point3DEventArgs>(Cortar_DataUp);
+            this.EntitySelected += new EventHandler<EntitySelectedEventArgs>(Cortar_EntitySelected);
         }
 
-        void Recortar_EntitySelected(object sender, EntitySelectedEventArgs e)
+        void Cortar_EntitySelected(object sender, EntitySelectedEventArgs e)
         {
             try
             {
@@ -63,7 +63,7 @@ namespace Ordenes.OperacionesConEntidades
                     entidadesAEliminar.Count,
                     entidadesAAñadir.Count);
                 Digi3D.Music(MusicType.EndOfLongProcess);
-                Digi3D.ShowBallon("recortar",
+                Digi3D.ShowBallon("Cortar",
                     descripción,
                     2);
 
@@ -76,17 +76,17 @@ namespace Ordenes.OperacionesConEntidades
             }
         }
 
-        void Recortar_DataUp(object sender, Digi21.Math.Point3DEventArgs e)
+        void Cortar_DataUp(object sender, Digi21.Math.Point3DEventArgs e)
         {
             DigiNG.SelectEntity(e.Coordinates, entidad => entidad is ReadOnlyLine);
         }
 
-        void Recortar_SetFocus(object sender, EventArgs e)
+        void Cortar_SetFocus(object sender, EventArgs e)
         {
             SolicitaSeleccionaEntidad();
         }
 
-        void Recortar_Initialize(object sender, EventArgs e)
+        void Cortar_Initialize(object sender, EventArgs e)
         {
             SolicitaSeleccionaEntidad();
         }
