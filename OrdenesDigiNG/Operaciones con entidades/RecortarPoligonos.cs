@@ -31,7 +31,7 @@ namespace Ordenes.OperacionesConEntidades
 
                 var entidadesRecortables = (from entidad in DigiNG.DrawingFile
                                             where entidad != límite
-                                            where entidad is IClippable
+                                            where entidad is ReadOnlyPolygon || entidad is ReadOnlyLine && (entidad as ReadOnlyLine).Closed
                                             where !entidad.Deleted
                                             where entidad.AlgúnCódigoVisible()
                                             where Window2D.Intersects(límite, entidad)
