@@ -54,7 +54,18 @@ namespace Ordenes.OperacionesConEntidades
             try
             {
                 var polígono = Polygon.JoinPolygons(entidadAUnir, e.Entity);
-                DigiNG.DrawingFile.Add(polígono);
+                Entity entidadAAñadir = polígono;
+
+                // Me han solicitado que si las dos líneas que han formado el polígono son líneas y el polígono resultante no tiene
+                // ningún hueco, que el resultado siga siendo una línea y no un polígono.
+                if (entidadAUnir is ReadOnlyLine && e.Entity is ReadOnlyLine && 0 == polígono.Holes.Count)
+                {
+                    var temp = new Line(polígono.Codes);
+                    temp.Points.Add(polígono.Points);
+                    entidadAAñadir = temp;
+                }
+
+                DigiNG.DrawingFile.Add(entidadAAñadir);
                 DigiNG.DrawingFile.Delete(entidadAUnir);
                 DigiNG.DrawingFile.Delete(e.Entity);
             }
