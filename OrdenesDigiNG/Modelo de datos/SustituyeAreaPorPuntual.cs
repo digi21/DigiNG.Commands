@@ -17,6 +17,7 @@ namespace Ordenes.ModeloDeDatos
         public string CódigoPunto { get; set; }
     }
 
+    // Pongo la clase internal porque esta funcionalidad ha sido implementada en Digi.tab con la funcionalidad de desencadenadores
 
     /// <summary>
     ///  Implementa un proceso que sustituye líneas (cerradas) por puntuales en función de su area.
@@ -29,7 +30,7 @@ namespace Ordenes.ModeloDeDatos
     /// únicamente le solicite al usuario por el segundo punto (el que indica la rotación del puntual).
     /// </remarks>
     [Command(Name = "sustituye_area_por_puntual")]
-    public class SustituyeAreaPorPuntual : Command
+    internal class SustituyeAreaPorPuntual : Command
     {
         /// <summary>
         /// Diccionario que almacena el código de la línea y los valores de área mínima y el código del puntual para el caso de que sea necesario sustituir la línea por un puntual.

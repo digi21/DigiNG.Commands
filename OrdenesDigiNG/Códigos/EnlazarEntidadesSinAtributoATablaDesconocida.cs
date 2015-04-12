@@ -7,8 +7,10 @@ using Digi21.DigiNG.Plugin.Command;
 
 namespace Ordenes.Códigos
 {
+    // Ejemplo de cómo enlazar entidades que cumplen un determinado criterio a una tabla determinada
+
     [Command(Name = "enlazar_entidades_sin_atributo_a_tabla_desconocida")]
-    public class EnlazarEntidadesSinAtributoATablaDesconocida : Command
+    internal class EnlazarEntidadesSinAtributoATablaDesconocida : Command
     {
         public EnlazarEntidadesSinAtributoATablaDesconocida()
         {
@@ -44,8 +46,7 @@ namespace Ordenes.Códigos
                         if (!códigosNuevos[i].Table.HasValue && tablaConLaQueEnlazaElCódigoPrincipal != "")
                         {
                             sw = true;
-
-                            // Lo hago con un try-catch porque es posible que no exista el número de tabla
+                                                        // Lo hago con un try-catch porque es posible que no exista el número de tabla
                             try {
                                 códigosNuevos[i] = new Code(
                                     códigosNuevos[i].Name, 

@@ -10,7 +10,7 @@ using Digi21.Digi3D;
 
 namespace OrdenesDigiNG
 {
-    [Command(Name="detectar_lineas_perimetro_inferior")]
+    [LocalizableCommand(typeof(Recursos), "DetectaLíneasPerímetroInferiorAValorName")]
     public class DetectaLíneasPerímetroInferiorAValor : Command
     {
         public DetectaLíneasPerímetroInferiorAValor()
@@ -29,7 +29,8 @@ namespace OrdenesDigiNG
             
             foreach (var línea in líneasDetectadas)
             {
-                var mensaje = string.Format("Línea ({0}) con perímetro: {1} inferior a {2}", 
+                var mensaje = string.Format(
+                    Recursos.LineaXConPerímetroYInferiorAZ, 
                     línea.Codes[0].Name,
                     línea.Perimeter,
                     perímetro);

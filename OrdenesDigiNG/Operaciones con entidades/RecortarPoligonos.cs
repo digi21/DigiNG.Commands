@@ -11,8 +11,8 @@ using Digi21.DigiNG.Plugin.Shell;
 
 namespace Ordenes.OperacionesConEntidades
 {
-    [Command(Name = "recortar_poligonos")]
-    [CommandInMenu("Recortar polígonos", MenuItemGroup.EditGroup9Group15)]
+    [LocalizableCommand(typeof(OrdenesDigiNG.Recursos), "RecortarPoligonosName")]
+    [LocalizableCommandInMenuAttribute(typeof(OrdenesDigiNG.Recursos), "RecortarPoligonosTitle", MenuItemGroup.EditGroup9Group15)]
     public class RecortarPoligonos : Command
     {
         public RecortarPoligonos()
@@ -59,11 +59,13 @@ namespace Ordenes.OperacionesConEntidades
                     }
                 }
 
-                string descripción = string.Format("Se partieron {0} entidades y se formaron {1} entidades nuevas",
+                string descripción = string.Format(
+                    OrdenesDigiNG.Recursos.SePartieronXEntidadesYSeFormaronYEntidadesNuevas,
                     entidadesAEliminar.Count,
                     entidadesAAñadir.Count);
                 Digi3D.Music(MusicType.EndOfLongProcess);
-                Digi3D.ShowBallon("Recortar poligonos",
+                Digi3D.ShowBallon(
+                    OrdenesDigiNG.Recursos.RecortarPoligonosName,
                     descripción,
                     2);
 
@@ -96,7 +98,7 @@ namespace Ordenes.OperacionesConEntidades
 
         void SolicitaSeleccionaEntidad()
         {
-            Digi3D.StatusBar.Text = "Selecciona la línea de límite";
+            Digi3D.StatusBar.Text = OrdenesDigiNG.Recursos.SeleccionaLaLíneaLímite;
         }
 
     }

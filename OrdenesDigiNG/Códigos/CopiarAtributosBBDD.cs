@@ -10,8 +10,8 @@ using Digi21.DigiNG.Plugin.Shell;
 
 namespace OrdenesDigiNG.Códigos
 {
-    [Command(Name = "copiar_atributos_bbdd")]
-    [CommandInMenu("Copiar atributos de bbdd", MenuItemGroup.EditGroup6)]
+    [LocalizableCommand(typeof(Recursos), "CopiarAtributosBBDDName")]
+    [LocalizableCommandInMenu(typeof(Recursos), "CopiarAtributosBBDDTitle", MenuItemGroup.EditGroup6)]
     public class CopiarAtributosBBDD : Command
     {
         private Entity entidadOrigen = null;
@@ -29,7 +29,7 @@ namespace OrdenesDigiNG.Códigos
             if (e.Entity.Codes.Count > 1)
             {
                 Digi3D.Music(MusicType.Error);
-                MessageBox.Show("Has seleccionado una entidad con más de un código. Esta orden aún no está preparada para este escenario.");
+                MessageBox.Show(OrdenesDigiNG.Recursos.HasSeleccionadoUnaEntidadConMasDeUnCodigoEstaOrdenNoEstaPreparada);
                 SolicitaSeleccionarEntidad();
                 return;
             }
@@ -50,7 +50,10 @@ namespace OrdenesDigiNG.Códigos
 
             if (códigosComunes.Count == 0)
             {
-                Digi3D.ShowBallon("copiar_atributos_bbdd", "La entidad origen y destino no tienen códigos comunes", 1000);
+                Digi3D.ShowBallon(
+                    OrdenesDigiNG.Recursos.CopiarAtributosBBDDName, 
+                    OrdenesDigiNG.Recursos.LaEntidadOrigenYDestinoNoTienenCódigosComunes, 
+                    1000);
                 Digi3D.Music(MusicType.Error);
             }
             else
@@ -103,9 +106,9 @@ namespace OrdenesDigiNG.Códigos
         private void SolicitaSeleccionarEntidad()
         {
             if (entidadOrigen == null)
-                Digi3D.StatusBar.Text = "Selecciona la entidad origen...";
+                Digi3D.StatusBar.Text = OrdenesDigiNG.Recursos.SeleccionaLaEntidadOrigen;
             else
-                Digi3D.StatusBar.Text = "Selecciona la entidad destino...";
+                Digi3D.StatusBar.Text = OrdenesDigiNG.Recursos.SeleccionaLaEntidadDestino;
         }
     }
 }

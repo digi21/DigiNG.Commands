@@ -14,8 +14,8 @@ using System.Windows.Forms;
 
 namespace Ordenes.OperacionesConEntidades
 {
-    [Command(Name = "unir_poligonos")]
-    [CommandInMenu("Unir polígonos", MenuItemGroup.EditGroup9Group15)]
+    [LocalizableCommand(typeof(OrdenesDigiNG.Recursos), "UnirPolígonosName")]
+    [LocalizableCommandInMenuAttribute(typeof(OrdenesDigiNG.Recursos), "UnirPolígonosTitle", MenuItemGroup.EditGroup9Group15)]
     public class UnirPolígonos : Command
     {
         private Entity entidadAUnir = null;
@@ -47,7 +47,7 @@ namespace Ordenes.OperacionesConEntidades
 
             if (!entidadAUnir.CódigosIdénticos(e.Entity, listaErrores))
             {
-                MessageBox.Show("Los códigos de las entidades son distintos, por lo tanto no se pueden unir");
+                MessageBox.Show(OrdenesDigiNG.Recursos.LosCódigosDeLasEntidadesSonDistintosYPoLoTantoNoSePuedenUnir);
                 return;
             }
 
@@ -95,10 +95,10 @@ namespace Ordenes.OperacionesConEntidades
 
         void SolicitaSeleccionaEntidad()
         {
-            if( null == entidadAUnir )
-                Digi3D.StatusBar.Text = "Selecciona el primer polígono a unir";
+            if (null == entidadAUnir)
+                Digi3D.StatusBar.Text = OrdenesDigiNG.Recursos.SeleccionaElPrimerPolígnoAUnir;
             else
-                Digi3D.StatusBar.Text = "Selecciona el segundo polígono a unir";
+                Digi3D.StatusBar.Text = OrdenesDigiNG.Recursos.SeleccionaElSegundoPolígonoAUnir;
         }
 
     }

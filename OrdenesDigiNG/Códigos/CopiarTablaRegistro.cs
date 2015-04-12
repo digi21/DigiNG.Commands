@@ -14,8 +14,8 @@ namespace Ordenes.Códigos
     /// Esta orden solicita que se seleccione una entidad origen y una destino. Copiará el el número de tabla y registro del código de la entidad origen en la destino
     /// sin modificar el nombre del código de la entidad origen.
     /// </summary>
-    [Command(Name = "copiar_tabla_registro")]
-    [CommandInMenu("Copiar tabla/registro de código manteniendo nombre", MenuItemGroup.EditGroup6)]
+    [LocalizableCommand(typeof(OrdenesDigiNG.Recursos), "CopiarTablaRegistroName")]
+    [LocalizableCommandInMenuAttribute(typeof(OrdenesDigiNG.Recursos), "CopiarTablaRegistroTitle", MenuItemGroup.EditGroup6)]
     public class CopiarTablaRegistro : Command
     {
         private Entity entidadOrigen = null;
@@ -33,7 +33,7 @@ namespace Ordenes.Códigos
             if (e.Entity.Codes.Count > 1)
             {
                 Digi3D.Music(MusicType.Error);
-                MessageBox.Show("Has seleccionado una entidad con más de un código. Esta orden aún no está preparada para este escenario.");
+                MessageBox.Show(OrdenesDigiNG.Recursos.HasSeleccionadoUnaEntidadConMasDeUnCodigoEstaOrdenNoEstaPreparada);
                 SolicitaSeleccionarEntidad();
                 return;
             }
@@ -41,7 +41,7 @@ namespace Ordenes.Códigos
             if (null == entidadOrigen)
             {
                 if (!e.Entity.Codes[0].Table.HasValue || !e.Entity.Codes[0].Id.HasValue)
-                    MessageBox.Show("La entidad que has seleccionado no tiene ningún enlace de base de datos.");
+                    MessageBox.Show(OrdenesDigiNG.Recursos.LaEntidadQueHasSeleccionadoNoTieneNingúnEnlaceDeBaseDatos);
                 else
                     entidadOrigen = e.Entity;
 
@@ -84,9 +84,9 @@ namespace Ordenes.Códigos
         private void SolicitaSeleccionarEntidad()
         {
             if (entidadOrigen == null)
-                Digi3D.StatusBar.Text = "Selecciona la entidad origen...";
+                Digi3D.StatusBar.Text = OrdenesDigiNG.Recursos.SeleccionaLaEntidadOrigen;
             else
-                Digi3D.StatusBar.Text = "Selecciona la entidad destino...";
+                Digi3D.StatusBar.Text = OrdenesDigiNG.Recursos.SeleccionaLaEntidadDestino;
         }
     }
 }

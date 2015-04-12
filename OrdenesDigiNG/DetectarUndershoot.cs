@@ -12,7 +12,7 @@ using Digi21.Digi3D;
 
 namespace OrdenesDigiNG
 {
-    [Command(Name="detectar_undershoot")]
+    [LocalizableCommand(typeof(Recursos), "DetectarUndershootName")]
     public class DetectarUndershoot : Command
     {
         public DetectarUndershoot()
@@ -55,11 +55,11 @@ namespace OrdenesDigiNG
             var tareasPuntos = new List<ITask>();
             foreach (var coordenadaCercanaAlOrigen in coordenadasCercanas)
             {
-                var mensaje = string.Format("Magnitud {0}", (new Point2D(puntoGotoTareaPrincipal.X, puntoGotoTareaPrincipal.Y) - coordenadaCercanaAlOrigen).Module);
+                var mensaje = string.Format(Recursos.MagnitudX, (new Point2D(puntoGotoTareaPrincipal.X, puntoGotoTareaPrincipal.Y) - coordenadaCercanaAlOrigen).Module);
                 tareasPuntos.Add(new TaskGotoPoint(new Point3D(coordenadaCercanaAlOrigen.X, coordenadaCercanaAlOrigen.Y, 0.0), mensaje, TaskSeverity.Error));
             }
 
-            var mensajeTareaPrincipal = string.Format("Localizado undershoot en la línea con código {0}", línea.Codes[0].Name);
+            var mensajeTareaPrincipal = string.Format(Recursos.LocalizadoUndershootEnLaLíneaConCódigoX, línea.Codes[0].Name);
             var tareaPrincipal = new TaskEntityGotoPoint(
                 puntoGotoTareaPrincipal,
                 línea,
@@ -67,7 +67,7 @@ namespace OrdenesDigiNG
                 mensajeTareaPrincipal,
                 TaskSeverity.Error,
                 DigiNG.DrawingFile.Path,
-                "detectar_undershoot",
+                Recursos.DetectarUndershootName,
                 tareasPuntos.ToArray());
 
             Digi3D.Tasks.Add(tareaPrincipal);

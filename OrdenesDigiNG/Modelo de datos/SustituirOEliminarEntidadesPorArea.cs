@@ -6,8 +6,9 @@ using Digi21.DigiNG.Plugin.Command;
 
 namespace Ordenes.ModeloDeDatos
 {
+    // Pongo la clase internal porque esta funcionalidad ha sido implementada en Digi.tab con la funcionalidad de desencadenadores
     [Command(Name="sustituir_o_eliminar_entidades_por_area")]
-    public class SustituirOEliminarEntidadesPorArea : Command
+    internal class SustituirOEliminarEntidadesPorArea : Command
     {
         public static bool Sustituir = true;
 

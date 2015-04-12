@@ -11,8 +11,8 @@ using Digi21.DigiNG.Plugin.Shell;
 
 namespace Ordenes.OperacionesConEntidades
 {
-    [Command(Name = "cortar")]
-    [CommandInMenu("Cortar", MenuItemGroup.EditGroup4)]
+    [LocalizableCommand(typeof(OrdenesDigiNG.Recursos), "CortarName")]
+    [LocalizableCommandInMenuAttribute(typeof(OrdenesDigiNG.Recursos), "CortarTitle", MenuItemGroup.EditGroup4)]
     public class Cortar : Command
     {
         public Cortar()
@@ -59,7 +59,7 @@ namespace Ordenes.OperacionesConEntidades
                     }
                 }
 
-                string descripción = string.Format("Se partieron {0} entidades y se formaron {1} entidades nuevas",
+                string descripción = string.Format(OrdenesDigiNG.Recursos.SePartieronXEntidadesYSeFormaronYEntidadesNuevas,
                     entidadesAEliminar.Count,
                     entidadesAAñadir.Count);
                 Digi3D.Music(MusicType.EndOfLongProcess);
@@ -93,7 +93,7 @@ namespace Ordenes.OperacionesConEntidades
 
         void SolicitaSeleccionaEntidad()
         {
-            Digi3D.StatusBar.Text = "Selecciona la línea de límite";
+            Digi3D.StatusBar.Text = OrdenesDigiNG.Recursos.SeleccionaLaLíneaLímite;
         }
 
     }

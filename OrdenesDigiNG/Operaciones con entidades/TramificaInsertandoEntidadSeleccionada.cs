@@ -15,8 +15,8 @@ namespace Ordenes.OperacionesConEntidades
     /// Esta orden solicita al usuario que se seleccione una entidad y localiza todas las intersecciones de esta entidad con el resto de entidades del archivo
     /// de dibujo. Insertará en la entidad seleccionada un vértice por cada vértice localizado en otras entidades.
     /// </summary>
-    [Command(Name = "tram_inserta_vertices_entidad_sel")]
-    [CommandInMenu("Línea seleccionada", MenuItemGroup.GeometricAnalysisGroup1Group1)]
+    [LocalizableCommand(typeof(OrdenesDigiNG.Recursos), "TramificaInsertandoEntidadSeleccionadaName")]
+    [LocalizableCommandInMenuAttribute(typeof(OrdenesDigiNG.Recursos), "TramificaInsertandoEntidadSeleccionadaTitle", MenuItemGroup.GeometricAnalysisGroup1Group1)]
     public class TramificaInsertandoEntidadSeleccionada : Command
     {
         public TramificaInsertandoEntidadSeleccionada()
@@ -34,7 +34,7 @@ namespace Ordenes.OperacionesConEntidades
 
         void InvitaAlUsuarioASeleccionarLínea(object sender, EventArgs e)
         {
-            Digi3D.StatusBar.Text = "Selecciona la línea a tramificar";
+            Digi3D.StatusBar.Text = OrdenesDigiNG.Recursos.SeleccionaLíneaATramificar;
         }
 
         void TramificaInsertandoEntidadSeleccionada_EntitySelected(object sender, EntitySelectedEventArgs e)

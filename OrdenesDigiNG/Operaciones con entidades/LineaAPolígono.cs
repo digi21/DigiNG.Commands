@@ -10,7 +10,7 @@ using Digi21.DigiNG;
 
 namespace OrdenesDigiNG.OperacionesConEntidades
 {
-    [Command(Name="linea_a_poligono", Description="Transforma líneas en polígonos. Es necesario introducir como parámetros los códigos de las líneas (cerradas) a transformar en polígono. Se pueden poner varios parámetros y además se admiten comodines.")]
+    [LocalizableCommand(typeof(Recursos), "LineaAPolígonoName", "LineaAPolígonoDescription")]
     public class LineaAPolígono : Command
     {
         public LineaAPolígono()
@@ -26,8 +26,8 @@ namespace OrdenesDigiNG.OperacionesConEntidades
                 {
                     Digi3D.Music(MusicType.Error);
                     Digi3D.ShowBallon(
-                        "linea_a_poligono",
-                        "No ha indicado los códigos de las líneas a convertir a polígono",
+                        Recursos.LineaAPolígonoName,
+                        Recursos.NoHaIndicadoLosCódigosDeLasLíneasAConvertirEnPolígono,
                         2);
                     return;
                 }

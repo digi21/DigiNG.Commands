@@ -13,8 +13,8 @@ namespace Ordenes.Códigos
     /// Simula la orden CAMB_COD de DigiNG con la particuladidad de que si el nombre de tabla asignado en la tabla de códigos activa para el código
     /// destino coincide con el nombre de tabla del código original, se mantienen tanto el número de tabla como el número de registro.
     /// </summary>
-    [Command(Name = "camb_cod_manteniendo_atributos")]
-    [CommandInMenu("Cambia código manteniendo atributos", MenuItemGroup.EditGroup6)]
+    [LocalizableCommand(typeof(OrdenesDigiNG.Recursos), "CambCodManteniendoAtributosName")]
+    [LocalizableCommandInMenuAttribute(typeof(OrdenesDigiNG.Recursos), "CambCodManteniendoAtributosTitle", MenuItemGroup.EditGroup6)]
     public class CambCodManteniendoAtributos : Command
     {
         public CambCodManteniendoAtributos()

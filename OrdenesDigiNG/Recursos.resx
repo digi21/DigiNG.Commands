@@ -1,0 +1,252 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="CopiarAtributosBBDDName" xml:space="preserve">
+    <value>copy_database_attributes</value>
+  </data>
+  <data name="CopiarNombreCódigoName" xml:space="preserve">
+    <value>copy_code_name</value>
+  </data>
+  <data name="CopiarTablaRegistroName" xml:space="preserve">
+    <value>copy_table_registr</value>
+  </data>
+  <data name="CortarName" xml:space="preserve">
+    <value>cut</value>
+  </data>
+  <data name="CortarPoligonoName" xml:space="preserve">
+    <value>cut_polygon</value>
+  </data>
+  <data name="DetectaLíneasPerímetroInferiorAValorName" xml:space="preserve">
+    <value>detect_lines_perimeter_lower</value>
+  </data>
+  <data name="DetectarUndershootName" xml:space="preserve">
+    <value>detect_undershoot</value>
+  </data>
+  <data name="HasSeleccionadoUnaEntidadConMasDeUnCodigoEstaOrdenNoEstaPreparada" xml:space="preserve">
+    <value>You have chosen an entity with more than one code. This order is not yet prepared for this scenario.</value>
+  </data>
+  <data name="LaEntidadOrigenYDestinoNoTienenCódigosComunes" xml:space="preserve">
+    <value>Source and destination entities does not have common codes</value>
+  </data>
+  <data name="LaEntidadQueHasSeleccionadoNoTieneNingúnEnlaceDeBaseDatos" xml:space="preserve">
+    <value>The source and destination entities have no common codes</value>
+  </data>
+  <data name="LineaAPolígonoDescription" xml:space="preserve">
+    <value>Transforms lines to polygons. It is necessary to introduce codes of (closed) lines as parameters to transform into polygon. You can put multiple parameters and wildcards are also supported.</value>
+  </data>
+  <data name="LineaAPolígonoName" xml:space="preserve">
+    <value>line_to_polygon</value>
+  </data>
+  <data name="LineaXConPerímetroYInferiorAZ" xml:space="preserve">
+    <value>Line ({0}) with perimeter: {1} lower than {2}</value>
+  </data>
+  <data name="LocalizadoUndershootEnLaLíneaConCódigoX" xml:space="preserve">
+    <value>Located undershoot in line with code {0}</value>
+  </data>
+  <data name="LosCódigosDeLasEntidadesSonDistintosYPoLoTantoNoSePuedenUnir" xml:space="preserve">
+    <value>The codes of the entities are different, so it cannot be joined</value>
+  </data>
+  <data name="MagnitudX" xml:space="preserve">
+    <value>Magnitude {0}</value>
+  </data>
+  <data name="NoHaIndicadoLosCódigosDeLasLíneasAConvertirEnPolígono" xml:space="preserve">
+    <value>You have not specified the codes of the lines to convert to polygon</value>
+  </data>
+  <data name="PartirPoligonosName" xml:space="preserve">
+    <value>cut_polygons</value>
+  </data>
+  <data name="RecortarPoligonoName" xml:space="preserve">
+    <value>trim_polygon</value>
+  </data>
+  <data name="RecortarPoligonosName" xml:space="preserve">
+    <value>trim_polygons</value>
+  </data>
+  <data name="SeleccionaElPoligonoACortar" xml:space="preserve">
+    <value>Select the polygon to be cut</value>
+  </data>
+  <data name="SeleccionaElPolígonoARecortar" xml:space="preserve">
+    <value>Select the polygon to be trimmed</value>
+  </data>
+  <data name="SeleccionaElPrimerPolígnoAUnir" xml:space="preserve">
+    <value>Select the polygon to be joined</value>
+  </data>
+  <data name="SeleccionaElSegundoPolígonoAUnir" xml:space="preserve">
+    <value>Select the second polygon to join</value>
+  </data>
+  <data name="SeleccionaLaEntidadDestino" xml:space="preserve">
+    <value>Select the destination entity...</value>
+  </data>
+  <data name="SeleccionaLaEntidadOrigen" xml:space="preserve">
+    <value>Select the origin entity...</value>
+  </data>
+  <data name="SeleccionaLaLíneaDeCorte" xml:space="preserve">
+    <value>Select the cutting line</value>
+  </data>
+  <data name="SeleccionaLaLíneaLímite" xml:space="preserve">
+    <value>Select the limit line</value>
+  </data>
+  <data name="SeleccionaLíneaATramificar" xml:space="preserve">
+    <value>Select the line to cut</value>
+  </data>
+  <data name="SePartieronXEntidadesYSeFormaronYEntidadesNuevas" xml:space="preserve">
+    <value>{0} entities was cutted and {1} entities was formed</value>
+  </data>
+  <data name="TramificaInsertandoEntidadSeleccionadaName" xml:space="preserve">
+    <value>insert_vertex_selected_entity</value>
+  </data>
+  <data name="UnirPolígonosName" xml:space="preserve">
+    <value>join_polygons</value>
+  </data>
+  <data name="CambCodManteniendoAtributosName" xml:space="preserve">
+    <value>change_code_keeping_attributes</value>
+  </data>
+  <data name="CambCodManteniendoAtributosTitle" xml:space="preserve">
+    <value>Change code while maintaining attributes</value>
+  </data>
+  <data name="CopiarAtributosBBDDTitle" xml:space="preserve">
+    <value>Copy database attributes</value>
+  </data>
+  <data name="CopiarNombreCódigoTitle" xml:space="preserve">
+    <value>Copy code name maintaining attributes</value>
+  </data>
+  <data name="CopiarTablaRegistroTitle" xml:space="preserve">
+    <value>Copy code table/record keeping name</value>
+  </data>
+  <data name="CortarPoligonoTitle" xml:space="preserve">
+    <value>Cut polygon</value>
+  </data>
+  <data name="CortarTitle" xml:space="preserve">
+    <value>Cut</value>
+  </data>
+  <data name="PartirPoligonosTitle" xml:space="preserve">
+    <value>Cut polygons</value>
+  </data>
+  <data name="RecortarPoligonosTitle" xml:space="preserve">
+    <value>Trim polygons</value>
+  </data>
+  <data name="RecortarPoligonoTitle" xml:space="preserve">
+    <value>Trim polygon</value>
+  </data>
+  <data name="TramificaInsertandoEntidadSeleccionadaTitle" xml:space="preserve">
+    <value>Insert vertices at the intersections of the selected line</value>
+  </data>
+  <data name="UnirPolígonosTitle" xml:space="preserve">
+    <value>Join polygons</value>
+  </data>
+</root>

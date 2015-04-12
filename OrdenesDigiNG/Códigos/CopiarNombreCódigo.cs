@@ -14,8 +14,8 @@ namespace Ordenes.Códigos
     /// Esta orden solicita que se seleccione una entidad origen y una destino. Copiará el nombre del código de la entidad origen en la destino sin sustituir
     /// los enlaces de BBDD que tuviera la entidad destino.
     /// </summary>
-    [Command(Name = "copiar_nombre_codigo")]
-    [CommandInMenu("Copiar nombre de código manteniendo atributos", MenuItemGroup.EditGroup6)]
+    [LocalizableCommand(typeof(OrdenesDigiNG.Recursos), "CopiarNombreCódigoName")]
+    [LocalizableCommandInMenuAttribute(typeof(OrdenesDigiNG.Recursos), "CopiarNombreCódigoTitle", MenuItemGroup.EditGroup6)]
     public class CopiarNombreCódigo : Command
     {
         private Entity entidadOrigen = null;
@@ -33,7 +33,7 @@ namespace Ordenes.Códigos
             if (e.Entity.Codes.Count > 1)
             {
                 Digi3D.Music(MusicType.Error);
-                MessageBox.Show("Has seleccionado una entidad con más de un código. Esta orden aún no está preparada para este escenario.");
+                MessageBox.Show(OrdenesDigiNG.Recursos.HasSeleccionadoUnaEntidadConMasDeUnCodigoEstaOrdenNoEstaPreparada);
                 SolicitaSeleccionarEntidad();
                 return;
             }
@@ -80,9 +80,9 @@ namespace Ordenes.Códigos
         private void SolicitaSeleccionarEntidad()
         {
             if (entidadOrigen == null)
-                Digi3D.StatusBar.Text = "Selecciona la entidad origen...";
+                Digi3D.StatusBar.Text = OrdenesDigiNG.Recursos.SeleccionaLaEntidadOrigen;
             else
-                Digi3D.StatusBar.Text = "Selecciona la entidad destino...";
+                Digi3D.StatusBar.Text = OrdenesDigiNG.Recursos.SeleccionaLaEntidadDestino;
         }
     }
 }

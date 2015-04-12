@@ -8,8 +8,8 @@ using Digi21.DigiNG.Plugin.Shell;
 
 namespace Ordenes.OperacionesConEntidades
 {
-    [Command(Name = "Recortar_poligono")]
-    [CommandInMenu("Recortar polígono", MenuItemGroup.EditGroup9Group15)]
+    [LocalizableCommand(typeof(OrdenesDigiNG.Recursos), "RecortarPoligonoName")]
+    [LocalizableCommandInMenuAttribute(typeof(OrdenesDigiNG.Recursos), "RecortarPoligonoTitle", MenuItemGroup.EditGroup9Group15)]
     public class RecortarPoligono : Command
     {
         private Entity entidadADividir = null;
@@ -55,7 +55,8 @@ namespace Ordenes.OperacionesConEntidades
             catch (Exception ex)
             {
                 Digi3D.Music(MusicType.Error);
-                Digi3D.ShowBallon("Recortar polígono",
+                Digi3D.ShowBallon(
+                    OrdenesDigiNG.Recursos.RecortarPoligonoName,
                     ex.Message,
                     2);
             }
@@ -76,9 +77,9 @@ namespace Ordenes.OperacionesConEntidades
         void SolicitaSeleccionaEntidad()
         {
             if (entidadADividir == null)
-                Digi3D.StatusBar.Text = "Selecciona el polígono a recortar";
+                Digi3D.StatusBar.Text = OrdenesDigiNG.Recursos.SeleccionaElPolígonoARecortar;
             else
-                Digi3D.StatusBar.Text = "Selecciona la línea de corte";
+                Digi3D.StatusBar.Text = OrdenesDigiNG.Recursos.SeleccionaLaLíneaDeCorte;
         }
 
     }

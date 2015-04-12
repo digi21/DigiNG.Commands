@@ -8,6 +8,8 @@ using Digi21.Utilities;
 
 namespace Ordenes.ModeloDeDatos
 {
+    // Pongo la clase internal porque esta funcionalidad ha sido implementada en Digi.tab con la funcionalidad de desencadenadores
+
     /// <summary>
     ///  Implementa un proceso que cancela la escritura de entidades de tipo línea con un área inferior a la especificada por parámetros.
     /// </summary>
@@ -17,7 +19,7 @@ namespace Ordenes.ModeloDeDatos
     /// área es inferior a la mínima para ese determinado código, el proceso bloqueará la escritura de esa entidad modificando la propiedad <c>AddingEntityEventArgs.Cancel</c>
     /// </remarks>
     [Command(Name="eliminar_entidades_area_pequeña")]
-    public class EliminarEntidadesAreaPequeña : Command
+    internal class EliminarEntidadesAreaPequeña : Command
     {
         /// <summary>
         /// Diccionario donde almacenaremos por cada código el valor del área mínima exigible.
