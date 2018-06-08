@@ -1,31 +1,30 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using Digi21.DigiNG.Plugin.Command;
-using Digi21.DigiNG.Topology;
+using Digi21.Digi3D;
 using Digi21.DigiNG;
 using Digi21.DigiNG.Entities;
-using Digi21.Utilities;
+using Digi21.DigiNG.Plugin.Command;
+using Digi21.DigiNG.Topology;
 using Digi21.Math;
-using Digi21.Digi3D;
+using Digi21.Utilities;
 
-namespace OrdenesDigiNG
+namespace DigiNG.Commands
 {
     [LocalizableCommand(typeof(Recursos), "DetectarUndershootName")]
     public class DetectarUndershoot : Command
     {
         public DetectarUndershoot()
         {
-            this.Initialize += new EventHandler(DetectarUndershoot_Initialize);
+            Initialize += DetectarUndershoot_Initialize;
         }
 
-        void DetectarUndershoot_Initialize(object sender, EventArgs e)
+        private void DetectarUndershoot_Initialize(object sender, EventArgs e)
         {
-            double tolerancia = double.Parse(this.Args[0]);
+            var tolerancia = double.Parse(Args[0]);
 
-            var líneasDeInterés = DigiNG.DrawingFile.NoEliminadas().OfType<ReadOnlyLine>().QueTenganAlgúnCódigoConComodín(this.Args.Skip(1));
-            var nodos = líneasDeInterés.DetectNodes();
+            var líneasDeInterés = Digi21.DigiNG.DigiNG.DrawingFile.NoEliminadas().OfType<ReadOnlyLine>().QueTenganAlgúnCódigoConComodín(Args.Skip(1)).ToArray();
+            var nodos = líneasDeInterés.DetectNodes().ToArray();
 
             foreach (var nodo in nodos)
             {
@@ -37,15 +36,15 @@ namespace OrdenesDigiNG
                 var coordenadasCercanasAlOrigen = nodos.FindAll(
                     new Point2D(línea.FirstVertex.X, línea.FirstVertex.Y), 
                     tolerancia,
-                    nodo => !nodo.LíneaLlegaANodo(línea));
-                if (coordenadasCercanasAlOrigen.Count() != 0)
+                    nodo => !nodo.LíneaLlegaANodo(línea)).ToArray();
+                if (coordenadasCercanasAlOrigen.Any())
                     CreaTareas(línea, línea.FirstVertex, coordenadasCercanasAlOrigen);
 
                 var coordenadasCercanasAlDestino = nodos.FindAll(
                     new Point2D(línea.LastVertex.X, línea.LastVertex.Y), 
                     tolerancia,
-                    nodo => !nodo.LíneaLlegaANodo(línea));
-                if (coordenadasCercanasAlDestino.Count() != 0)
+                    nodo => !nodo.LíneaLlegaANodo(línea)).ToArray();
+                if (coordenadasCercanasAlDestino.Any())
                     CreaTareas(línea, línea.LastVertex, coordenadasCercanasAlDestino);
             }
         }
@@ -66,7 +65,7 @@ namespace OrdenesDigiNG
                 2,
                 mensajeTareaPrincipal,
                 TaskSeverity.Error,
-                DigiNG.DrawingFile.Path,
+                Digi21.DigiNG.DigiNG.DrawingFile.Path,
                 Recursos.DetectarUndershootName,
                 tareasPuntos.ToArray());
 

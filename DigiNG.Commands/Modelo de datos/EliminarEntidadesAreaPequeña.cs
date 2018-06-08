@@ -6,7 +6,7 @@ using Digi21.DigiNG.Entities;
 using Digi21.DigiNG.Plugin.Command;
 using Digi21.Utilities;
 
-namespace Ordenes.ModeloDeDatos
+namespace DigiNG.Commands.Modelo_de_datos
 {
     // Pongo la clase internal porque esta funcionalidad ha sido implementada en Digi.tab con la funcionalidad de desencadenadores
 
@@ -24,7 +24,7 @@ namespace Ordenes.ModeloDeDatos
         /// <summary>
         /// Diccionario donde almacenaremos por cada código el valor del área mínima exigible.
         /// </summary>
-        private Dictionary<string, double> códigos = new Dictionary<string, double>();
+        private readonly Dictionary<string, double> códigos = new Dictionary<string, double>();
 
         /// <summary>
         /// Constructor de la orden.
@@ -34,9 +34,9 @@ namespace Ordenes.ModeloDeDatos
         /// </remarks>
         public EliminarEntidadesAreaPequeña()
         {
-            this.Initialize += new EventHandler(EliminarEntidadesAreaPequeña_Initialize);
-            this.Disposing += new EventHandler(EliminarEntidadesAreaPequeña_Disposing);
-            DigiNG.AddingEntity += new EventHandler<AddingEntityEventArgs>(DigiNG_AddingEntity);
+            Initialize += EliminarEntidadesAreaPequeña_Initialize;
+            Disposing += EliminarEntidadesAreaPequeña_Disposing;
+            Digi21.DigiNG.DigiNG.AddingEntity += DigiNG_AddingEntity;
         }
 
         /// <summary>
@@ -48,24 +48,24 @@ namespace Ordenes.ModeloDeDatos
         /// </remarks>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        void EliminarEntidadesAreaPequeña_Initialize(object sender, EventArgs e)
+        private void EliminarEntidadesAreaPequeña_Initialize(object sender, EventArgs e)
         {
             // Analizamos los argumentos y rellenamos el diccionario de códigos a analizar.
             if (Args.Length % 2 != 0)
                 throw new Exception("Número incorrecto de parámetros. El formato es: eliminar_entidades_area_pequeña=([código] [área])*");
 
-            for (int i = 0; i < Args.Length; i += 2)
+            for (var i = 0; i < Args.Length; i += 2)
             {
-                double distancia;
-                if( !double.TryParse(Args[i + 1], out distancia) )
-                    throw new Exception(string.Format("El parámetro número {0} ({1}) no es un valor de distancia válido.", i+2, Args[i + 1]));
+                if( !double.TryParse(Args[i + 1], out var distancia) )
+                    throw new Exception(
+                        $"El parámetro número {i + 2} ({Args[i + 1]}) no es un valor de distancia válido.");
 
                 códigos[Args[i + 0]] = distancia;
             }
 
             // Eliminamos la orden de la pila de órdenes de DigiNG para que se convierta en un proceso, de modo que si el usuario pulsa la tecla Esc o ejecuta
             // alguna orden como ELIMINA_ORDENES, no se pueda destruir esta orden.
-            DigiNG.Commands.Pop();
+            Digi21.DigiNG.DigiNG.Commands.Pop();
         }
 
         /// <summary>
@@ -77,9 +77,9 @@ namespace Ordenes.ModeloDeDatos
         /// </remarks>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        void EliminarEntidadesAreaPequeña_Disposing(object sender, EventArgs e)
+        private void EliminarEntidadesAreaPequeña_Disposing(object sender, EventArgs e)
         {
-            DigiNG.AddingEntity -= DigiNG_AddingEntity;
+            Digi21.DigiNG.DigiNG.AddingEntity -= DigiNG_AddingEntity;
         }
         
         /// <summary>
@@ -91,7 +91,7 @@ namespace Ordenes.ModeloDeDatos
         /// </remarks>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        void DigiNG_AddingEntity(object sender, AddingEntityEventArgs e)
+        private void DigiNG_AddingEntity(object sender, AddingEntityEventArgs e)
         {
             if (!SustituirOEliminarEntidadesPorArea.Sustituir)
                 return;
@@ -99,29 +99,26 @@ namespace Ordenes.ModeloDeDatos
             if (!(e.Entity is ReadOnlyLine))
                 return;
 
-            ReadOnlyLine línea = e.Entity as ReadOnlyLine;
+            var línea = e.Entity as ReadOnlyLine;
 
             if (!línea.Closed)
                 return;
 
             foreach (var nombreCódigo in códigos.Keys)
             {
-                if (línea.TieneElCódigo(nombreCódigo))
-                {
-                    var area = System.Math.Abs(DigiNG.GeographicCalculator.CalculateArea(línea));
+                if (!línea.TieneElCódigo(nombreCódigo)) continue;
+                var area = Math.Abs(Digi21.DigiNG.DigiNG.GeographicCalculator.CalculateArea(línea));
 
-                    if (area < códigos[nombreCódigo])
-                    {
-                        Digi3D.ShowBallon(
-                            "Entidad descartada",
-                            string.Format("Se descartó la línea con código {0} porque su área {1} es inferior a {2}", nombreCódigo, area, códigos[nombreCódigo]),
-                            2);
+                if (!(area < códigos[nombreCódigo])) continue;
 
-                        DigiNG.DrawEntity(e.Entity, DrawingMode.Hide);
-                        e.Cancel = true;
-                        return;
-                    }
-                }
+                Digi3D.ShowBallon(
+                    "Entidad descartada",
+                    $"Se descartó la línea con código {nombreCódigo} porque su área {area} es inferior a {códigos[nombreCódigo]}",
+                    2);
+
+                Digi21.DigiNG.DigiNG.DrawEntity(e.Entity, DrawingMode.Hide);
+                e.Cancel = true;
+                return;
             }
         }
 

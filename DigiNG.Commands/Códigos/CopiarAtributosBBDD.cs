@@ -2,26 +2,25 @@
 using System.Linq;
 using System.Windows.Forms;
 using Digi21.Digi3D;
-using Digi21.DigiNG;
 using Digi21.DigiNG.Entities;
 using Digi21.DigiNG.Plugin.Command;
-using Digi21.Math;
 using Digi21.DigiNG.Plugin.Shell;
+using Digi21.Math;
 
-namespace OrdenesDigiNG.Códigos
+namespace DigiNG.Commands.Códigos
 {
     [LocalizableCommand(typeof(Recursos), "CopiarAtributosBBDDName")]
     [LocalizableCommandInMenu(typeof(Recursos), "CopiarAtributosBBDDTitle", MenuItemGroup.EditGroup6)]
     public class CopiarAtributosBBDD : Command
     {
-        private Entity entidadOrigen = null;
+        private Entity entidadOrigen;
 
         public CopiarAtributosBBDD()
         {
-            this.Initialize += new EventHandler(CopiarAtributosBBDD_Initialize);
-            this.SetFocus += new EventHandler(CopiarAtributosBBDD_SetFocus);
-            this.DataUp += new EventHandler<Digi21.Math.Point3DEventArgs>(CopiarAtributosBBDD_DataUp);
-            this.EntitySelected += new EventHandler<EntitySelectedEventArgs>(CopiarAtributosBBDD_EntitySelected);
+            Initialize += CopiarAtributosBBDD_Initialize;
+            SetFocus += CopiarAtributosBBDD_SetFocus;
+            DataUp += CopiarAtributosBBDD_DataUp;
+            EntitySelected += CopiarAtributosBBDD_EntitySelected;
         }
 
         private void CopiarAtributosBBDD_EntitySelected(object sender, EntitySelectedEventArgs e)
@@ -29,7 +28,7 @@ namespace OrdenesDigiNG.Códigos
             if (e.Entity.Codes.Count > 1)
             {
                 Digi3D.Music(MusicType.Error);
-                MessageBox.Show(OrdenesDigiNG.Recursos.HasSeleccionadoUnaEntidadConMasDeUnCodigoEstaOrdenNoEstaPreparada);
+                MessageBox.Show(Recursos.HasSeleccionadoUnaEntidadConMasDeUnCodigoEstaOrdenNoEstaPreparada);
                 SolicitaSeleccionarEntidad();
                 return;
             }
@@ -51,35 +50,36 @@ namespace OrdenesDigiNG.Códigos
             if (códigosComunes.Count == 0)
             {
                 Digi3D.ShowBallon(
-                    OrdenesDigiNG.Recursos.CopiarAtributosBBDDName, 
-                    OrdenesDigiNG.Recursos.LaEntidadOrigenYDestinoNoTienenCódigosComunes, 
+                    Recursos.CopiarAtributosBBDDName, 
+                    Recursos.LaEntidadOrigenYDestinoNoTienenCódigosComunes, 
                     1000);
                 Digi3D.Music(MusicType.Error);
             }
             else
             {
-                Entity entidadClonada = e.Entity.Clone();
+                var entidadClonada = e.Entity.Clone();
 
                 EliminaEnlacesABBDD(entidadClonada);
 
-                DigiNG.DrawingFile.Add(entidadClonada,
+                Digi21.DigiNG.DigiNG.DrawingFile.Add(entidadClonada,
                     entidadOrigen.Owner.get_DatabaseAttributes(entidadOrigen));
                 Digi3D.Music(MusicType.EndOfLongProcess);
-                DigiNG.DrawingFile.Delete(e.Entity);
+                Digi21.DigiNG.DigiNG.DrawingFile.Delete(e.Entity);
             }
 
             entidadOrigen = null;
             SolicitaSeleccionarEntidad();
         }
 
-        private void EliminaEnlacesABBDD(Entity entidadClonada)
+        private static void EliminaEnlacesABBDD(Entity entidadClonada)
         {
             // Eliminamos los enlaces a BBDD de los distintos códigos para asegurarnos de que al añadir la entidad se generan altas nuevas. No queremos que los códigos 
             // apunten a los registros a los que están apuntando, queremos altas nuevas, porque puede incluso que la entidad de la cual estamos obteniendo los atributos 
             // ni siquiera pertenezca al archivo de dibujo activo.
-            for (int i = 0; i < entidadClonada.Codes.Count; i++)
+            for (var i = 0; i < entidadClonada.Codes.Count; i++)
                 entidadClonada.Codes[i] = new Code(entidadClonada.Codes[i].Name);
         }
+
         private void CopiarAtributosBBDD_DataUp(object sender, Point3DEventArgs e)
         {
             // Aquí ordenamos a DigiNG que localice entidades en las coordenadas en las que el usuario ha hecho clic con el ratón.
@@ -88,9 +88,9 @@ namespace OrdenesDigiNG.Códigos
             // únicamente si la entidad pertenece al archivo de dibujo (y no a los archivos de referencia). Eso se resuelve con una expresión lambda que devuelve verdadero únicamente
             // si la entidad indicada pertenece al archivo de dibujo.
             if (entidadOrigen == null)
-                DigiNG.SelectEntity(e.Coordinates);
+                Digi21.DigiNG.DigiNG.SelectEntity(e.Coordinates);
             else
-                DigiNG.SelectEntity(e.Coordinates, entidad => DigiNG.DrawingFile.Contains(entidad));
+                Digi21.DigiNG.DigiNG.SelectEntity(e.Coordinates, entidad => Digi21.DigiNG.DigiNG.DrawingFile.Contains(entidad));
         }
 
         private void CopiarAtributosBBDD_SetFocus(object sender, EventArgs e)
@@ -105,10 +105,7 @@ namespace OrdenesDigiNG.Códigos
 
         private void SolicitaSeleccionarEntidad()
         {
-            if (entidadOrigen == null)
-                Digi3D.StatusBar.Text = OrdenesDigiNG.Recursos.SeleccionaLaEntidadOrigen;
-            else
-                Digi3D.StatusBar.Text = OrdenesDigiNG.Recursos.SeleccionaLaEntidadDestino;
+            Digi3D.StatusBar.Text = entidadOrigen == null ? Recursos.SeleccionaLaEntidadOrigen : Recursos.SeleccionaLaEntidadDestino;
         }
     }
 }

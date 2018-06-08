@@ -6,12 +6,12 @@ using Digi21.DigiNG.Entities;
 using Digi21.DigiNG.Plugin.Command;
 using Digi21.Utilities;
 
-namespace Ordenes.ModeloDeDatos
+namespace DigiNG.Commands.Modelo_de_datos
 {
     /// <summary>
     /// Almacena el valor del área mínima así como el código del puntual por el cual sustituir una determinada línea si su área es inferior al valor indicado.
     /// </summary>
-    struct DatoSustituyeAreaPorPuntual
+    internal struct DatoSustituyeAreaPorPuntual
     {
         public double Area { get; set; }
         public string CódigoPunto { get; set; }
@@ -35,7 +35,7 @@ namespace Ordenes.ModeloDeDatos
         /// <summary>
         /// Diccionario que almacena el código de la línea y los valores de área mínima y el código del puntual para el caso de que sea necesario sustituir la línea por un puntual.
         /// </summary>
-        private Dictionary<string, DatoSustituyeAreaPorPuntual> códigos = new Dictionary<string, DatoSustituyeAreaPorPuntual>();
+        private readonly Dictionary<string, DatoSustituyeAreaPorPuntual> códigos = new Dictionary<string, DatoSustituyeAreaPorPuntual>();
 
         /// <summary>
         /// Constructor de la orden.
@@ -45,11 +45,11 @@ namespace Ordenes.ModeloDeDatos
         /// </remarks>
         public SustituyeAreaPorPuntual()
         {
-            this.Initialize += new EventHandler(SustituyeAreaPorPuntual_Initialize);
-            this.Disposing += new EventHandler(SustituyeAreaPorPuntual_Disposing);
+            Initialize += SustituyeAreaPorPuntual_Initialize;
+            Disposing += SustituyeAreaPorPuntual_Disposing;
 
             // Nos suscribimos al evento AddingEntity para analizar las entidades que se pretenden almacenar.
-            DigiNG.AddingEntity += new EventHandler<AddingEntityEventArgs>(DigiNG_AddingEntity);
+            Digi21.DigiNG.DigiNG.AddingEntity += DigiNG_AddingEntity;
         }
 
         /// <summary>
@@ -61,24 +61,24 @@ namespace Ordenes.ModeloDeDatos
         /// </remarks>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        void SustituyeAreaPorPuntual_Initialize(object sender, EventArgs e)
+        private void SustituyeAreaPorPuntual_Initialize(object sender, EventArgs e)
         {
             // Analizamos los argumentos y rellenamos el diccionario de códigos a analizar.
             if (Args.Length % 3 != 0)
                 throw new Exception("Número incorrecto de parámetros. El formato es: sustituye_area_por_puntual=([código de área] [área mínima] [código de puntual])*");
 
-            for (int i = 0; i < Args.Length; i += 3)
+            for (var i = 0; i < Args.Length; i += 3)
             {
-                double area;
-                if( !double.TryParse(Args[i + 1], out area) )
-                    throw new Exception(string.Format("El parámetro número {0} ({1}) no es un valor de distancia válido.", i+2, Args[i + 1]));
+                if (!double.TryParse(Args[i + 1], out var area))
+                    throw new Exception(
+                        $"El parámetro número {i + 2} ({Args[i + 1]}) no es un valor de distancia válido.");
 
-                códigos[Args[i + 0]] = new DatoSustituyeAreaPorPuntual() { Area = area, CódigoPunto = Args[i + 2] };
+                códigos[Args[i + 0]] = new DatoSustituyeAreaPorPuntual { Area = area, CódigoPunto = Args[i + 2] };
             }
 
             // Eliminamos la orden de la pila de órdenes de DigiNG para que se convierta en un proceso, de modo que si el usuario pulsa la tecla Esc o ejecuta
             // alguna orden como ELIMINA_ORDENES, no se pueda destruir esta orden.
-            DigiNG.Commands.Pop();
+            Digi21.DigiNG.DigiNG.Commands.Pop();
         }
 
         /// <summary>
@@ -90,9 +90,9 @@ namespace Ordenes.ModeloDeDatos
         /// </remarks>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        void SustituyeAreaPorPuntual_Disposing(object sender, EventArgs e)
+        private void SustituyeAreaPorPuntual_Disposing(object sender, EventArgs e)
         {
-            DigiNG.AddingEntity -= DigiNG_AddingEntity;
+            Digi21.DigiNG.DigiNG.AddingEntity -= DigiNG_AddingEntity;
         }
 
         /// <summary>
@@ -105,7 +105,7 @@ namespace Ordenes.ModeloDeDatos
         /// </remarks>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        void DigiNG_AddingEntity(object sender, AddingEntityEventArgs e)
+        private void DigiNG_AddingEntity(object sender, AddingEntityEventArgs e)
         {
             if (!SustituirOEliminarEntidadesPorArea.Sustituir)
                 return;
@@ -113,39 +113,33 @@ namespace Ordenes.ModeloDeDatos
             if (!(e.Entity is ReadOnlyLine))
                 return;
 
-            ReadOnlyLine línea = e.Entity as ReadOnlyLine;
+            var línea = (ReadOnlyLine)e.Entity;
 
             if (!línea.Closed)
                 return;
 
             foreach (var nombreCódigo in códigos.Keys)
             {
-                if (línea.TieneElCódigo(nombreCódigo))
-                {
-                    var area = Math.Abs(DigiNG.GeographicCalculator.CalculateArea(línea));
-                    if (area < códigos[nombreCódigo].Area)
-                    {
-                        Digi3D.ShowBallon(
-                            "Sustitución de área por puntual",
-                            string.Format("Se va a sustituir su área con código {0} por un puntual con código {1} porque su área {2} es inferior a {3}", 
-                                nombreCódigo, 
-                                códigos[nombreCódigo].CódigoPunto,
-                                area, 
-                                códigos[nombreCódigo].Area),
-                            2);
+                if (!línea.TieneElCódigo(nombreCódigo)) continue;
 
-                        DigiNG.DrawEntity(e.Entity, DrawingMode.Hide);
-                        e.Cancel = true;
+                var area = Math.Abs(Digi21.DigiNG.DigiNG.GeographicCalculator.CalculateArea(línea));
+                if (!(area < códigos[nombreCódigo].Area)) continue;
 
-                        // En vez de ejecutar la orden PUNTO_R, ejecutamos su GUID, de modo que esta extensión sea compatible independientemente del idioma seleccionado por el usuario para Digi3D.
-                        DigiNG.Commands.Push("{D768CDA8-0BFA-465f-BC53-92F8C3D52786}=" + códigos[nombreCódigo].CódigoPunto, false);
+                Digi3D.ShowBallon(
+                    "Sustitución de área por puntual",
+                    $"Se va a sustituir su área con código {nombreCódigo} por un puntual con código {códigos[nombreCódigo].CódigoPunto} porque su área {area} es inferior a {códigos[nombreCódigo].Area}",
+                    2);
 
-                        // Por último, generamos un evento de pulsación de pedal/botón de dato con las coordenadas del centro de la entidad que no se va a almacenar, para así hacer que la orden PUNTO_R
-                        // únicamente le solicite al usuario el segundo punto (el que indica la rotación del punto).
-                        DigiNG.Commands.Top.OnDataDown(e.Entity.Center);
-                        return;
-                    }
-                }
+                Digi21.DigiNG.DigiNG.DrawEntity(e.Entity, DrawingMode.Hide);
+                e.Cancel = true;
+
+                // En vez de ejecutar la orden PUNTO_R, ejecutamos su GUID, de modo que esta extensión sea compatible independientemente del idioma seleccionado por el usuario para Digi3D.
+                Digi21.DigiNG.DigiNG.Commands.Push("{D768CDA8-0BFA-465f-BC53-92F8C3D52786}=" + códigos[nombreCódigo].CódigoPunto, false);
+
+                // Por último, generamos un evento de pulsación de pedal/botón de dato con las coordenadas del centro de la entidad que no se va a almacenar, para así hacer que la orden PUNTO_R
+                // únicamente le solicite al usuario el segundo punto (el que indica la rotación del punto).
+                Digi21.DigiNG.DigiNG.Commands.Top.OnDataDown(e.Entity.Center);
+                return;
             }
         }
 

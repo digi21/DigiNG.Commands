@@ -2,30 +2,29 @@
 using System.Linq;
 using System.Windows.Forms;
 using Digi21.Digi3D;
-using Digi21.DigiNG;
 using Digi21.DigiNG.Entities;
 using Digi21.DigiNG.Plugin.Command;
-using Digi21.Math;
 using Digi21.DigiNG.Plugin.Shell;
+using Digi21.Math;
 
-namespace Ordenes.Códigos
+namespace DigiNG.Commands.Códigos
 {
     /// <summary>
     /// Esta orden solicita que se seleccione una entidad origen y una destino. Copiará el nombre del código de la entidad origen en la destino sin sustituir
     /// los enlaces de BBDD que tuviera la entidad destino.
     /// </summary>
-    [LocalizableCommand(typeof(OrdenesDigiNG.Recursos), "CopiarNombreCódigoName")]
-    [LocalizableCommandInMenuAttribute(typeof(OrdenesDigiNG.Recursos), "CopiarNombreCódigoTitle", MenuItemGroup.EditGroup6)]
+    [LocalizableCommand(typeof(Recursos), "CopiarNombreCódigoName")]
+    [LocalizableCommandInMenu(typeof(Recursos), "CopiarNombreCódigoTitle", MenuItemGroup.EditGroup6)]
     public class CopiarNombreCódigo : Command
     {
-        private Entity entidadOrigen = null;
+        private Entity entidadOrigen;
 
         public CopiarNombreCódigo()
         {
-            this.Initialize += new EventHandler(CopiarNombreCódigo_Initialize);
-            this.SetFocus += new EventHandler(CopiarNombreCódigo_SetFocus);
-            this.DataUp += new EventHandler<Digi21.Math.Point3DEventArgs>(CopiarNombreCódigo_DataUp);
-            this.EntitySelected += new EventHandler<EntitySelectedEventArgs>(CopiarNombreCódigo_EntitySelected);
+            Initialize += CopiarNombreCódigo_Initialize;
+            SetFocus += CopiarNombreCódigo_SetFocus;
+            DataUp += CopiarNombreCódigo_DataUp;
+            EntitySelected += CopiarNombreCódigo_EntitySelected;
         }
 
         private void CopiarNombreCódigo_EntitySelected(object sender, EntitySelectedEventArgs e)
@@ -33,7 +32,7 @@ namespace Ordenes.Códigos
             if (e.Entity.Codes.Count > 1)
             {
                 Digi3D.Music(MusicType.Error);
-                MessageBox.Show(OrdenesDigiNG.Recursos.HasSeleccionadoUnaEntidadConMasDeUnCodigoEstaOrdenNoEstaPreparada);
+                MessageBox.Show(Recursos.HasSeleccionadoUnaEntidadConMasDeUnCodigoEstaOrdenNoEstaPreparada);
                 SolicitaSeleccionarEntidad();
                 return;
             }
@@ -45,10 +44,10 @@ namespace Ordenes.Códigos
                 return;
             }
 
-            Entity entidadClonada = e.Entity.Clone();
+            var entidadClonada = e.Entity.Clone();
             entidadClonada.Codes[0] = new Code(entidadOrigen.Codes[0].Name, entidadClonada.Codes[0].Table, entidadClonada.Codes[0].Id);
-            DigiNG.DrawingFile.Add(entidadClonada);
-            DigiNG.DrawingFile.Delete(e.Entity);
+            Digi21.DigiNG.DigiNG.DrawingFile.Add(entidadClonada);
+            Digi21.DigiNG.DigiNG.DrawingFile.Delete(e.Entity);
             entidadOrigen = null;
             Digi3D.Music(MusicType.EndOfLongProcess);
             SolicitaSeleccionarEntidad();
@@ -62,9 +61,9 @@ namespace Ordenes.Códigos
             // únicamente si la entidad pertenece al archivo de dibujo (y no a los archivos de referencia). Eso se resuelve con una expresión lambda que devuelve verdadero únicamente
             // si la entidad indicada pertenece al archivo de dibujo.
             if (entidadOrigen == null)
-                DigiNG.SelectEntity(e.Coordinates);
+                Digi21.DigiNG.DigiNG.SelectEntity(e.Coordinates);
             else
-                DigiNG.SelectEntity(e.Coordinates, entidad => DigiNG.DrawingFile.Contains(entidad));
+                Digi21.DigiNG.DigiNG.SelectEntity(e.Coordinates, entidad => Digi21.DigiNG.DigiNG.DrawingFile.Contains(entidad));
         }
 
         private void CopiarNombreCódigo_SetFocus(object sender, EventArgs e)
@@ -79,10 +78,7 @@ namespace Ordenes.Códigos
 
         private void SolicitaSeleccionarEntidad()
         {
-            if (entidadOrigen == null)
-                Digi3D.StatusBar.Text = OrdenesDigiNG.Recursos.SeleccionaLaEntidadOrigen;
-            else
-                Digi3D.StatusBar.Text = OrdenesDigiNG.Recursos.SeleccionaLaEntidadDestino;
+            Digi3D.StatusBar.Text = entidadOrigen == null ? Recursos.SeleccionaLaEntidadOrigen : Recursos.SeleccionaLaEntidadDestino;
         }
     }
 }

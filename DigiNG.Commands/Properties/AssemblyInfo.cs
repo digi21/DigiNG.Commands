@@ -1,15 +1,14 @@
 ﻿using System.Reflection;
-using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("DigiNG.Ordenes")]
+[assembly: AssemblyTitle("DigiNG.Commands")]
 [assembly: AssemblyDescription("Implementa órdenes para Digi3D.NET")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Dreaming With Objects S.L.")]
-[assembly: AssemblyProduct("DigiNG.Ordenes")]
+[assembly: AssemblyProduct("DigiNG.Commands")]
 [assembly: AssemblyCopyright("Copyright © 2010-2015 José Ángel Martínez Torres")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -32,5 +31,5 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("2015.0.0.0")]
-[assembly: AssemblyFileVersion("2015.0.0.0")]
+[assembly: AssemblyVersion("2017.0.0.0")]
+[assembly: AssemblyFileVersion("2017.0.0.0")]

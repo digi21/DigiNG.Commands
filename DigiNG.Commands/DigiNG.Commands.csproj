@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{6991C43C-E51A-485F-B6DB-A5798C4FB4AE}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DigiNG.Commands</RootNamespace>
+    <AssemblyName>DigiNG.Commands</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Debug\Win32\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisIgnoreBuiltInRuleSets>true</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
+    <CodeAnalysisFailOnMissingRules>false</CodeAnalysisFailOnMissingRules>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\Release\Win32\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisIgnoreBuiltInRuleSets>true</CodeAnalysisIgnoreBuiltInRuleSets>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Debug\x64\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisIgnoreBuiltInRuleSets>false</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+    <CodeAnalysisFailOnMissingRules>false</CodeAnalysisFailOnMissingRules>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\Release\x64\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisIgnoreBuiltInRuleSets>false</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+    <CodeAnalysisFailOnMissingRules>false</CodeAnalysisFailOnMissingRules>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Digi21.DigiNG, Version=17.0.0.0, Culture=neutral, PublicKeyToken=6751d7d8a775bb8c, processorArchitecture=x86">
+      <HintPath>..\packages\Digi21.DigiNG.x86.17.0.0\lib\net46\Digi21.DigiNG.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Digi21.DigiNG.Plugin, Version=17.0.0.0, Culture=neutral, PublicKeyToken=6751d7d8a775bb8c, processorArchitecture=x86">
+      <HintPath>..\packages\Digi21.DigiNG.Plugin.x86.17.0.0\lib\net46\Digi21.DigiNG.Plugin.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Digi21.DigiNG.Topology, Version=17.0.0.0, Culture=neutral, PublicKeyToken=6751d7d8a775bb8c, processorArchitecture=x86">
+      <HintPath>..\packages\Digi21.DigiNG.Topology.x86.17.0.0\lib\net46\Digi21.DigiNG.Topology.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Digi21.Utilities, Version=2017.0.0.0, Culture=neutral, PublicKeyToken=6751d7d8a775bb8c, processorArchitecture=x86">
+      <HintPath>..\packages\Digi21.Utilities.x86.17.0.0\lib\net46\Digi21.Utilities.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Códigos\CopiarAtributosBBDD.cs" />
+    <Compile Include="Códigos\CambCodManteniendoAtributos.cs" />
+    <Compile Include="Códigos\CopiarNombreCódigo.cs" />
+    <Compile Include="Códigos\CopiarTablaRegistro.cs" />
+    <Compile Include="DetectaLíneasPerímetroInferiorAValor.cs" />
+    <Compile Include="DetectarUndershoot.cs" />
+    <Compile Include="Modelo de datos\EliminarEntidadesAreaPequeña.cs" />
+    <Compile Include="Modelo de datos\SustituirOEliminarEntidadesPorArea.cs" />
+    <Compile Include="Operaciones con entidades\LineaAPolígono.cs" />
+    <Compile Include="Operaciones con entidades\Cortar.cs" />
+    <Compile Include="Operaciones con entidades\CortarPoligono.cs" />
+    <Compile Include="Operaciones con entidades\PartirPoligonos.cs" />
+    <Compile Include="Operaciones con entidades\RecortarPoligono.cs" />
+    <Compile Include="Operaciones con entidades\RecortarPoligonos.cs" />
+    <Compile Include="Operaciones con entidades\TramificaInsertandoEntidadSeleccionada.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Modelo de datos\SustituyeAreaPorPuntual.cs" />
+    <Compile Include="Recursos.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Recursos.resx</DependentUpon>
+    </Compile>
+    <Compile Include="UnirPolígonos.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <None Include="Recursos.es-ES.resx" />
+    <EmbeddedResource Include="Recursos.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Recursos.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2026
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DigiNG.Commands", "DigiNG.Commands\DigiNG.Commands.csproj", "{6991C43C-E51A-485F-B6DB-A5798C4FB4AE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6991C43C-E51A-485F-B6DB-A5798C4FB4AE}.Debug|x64.ActiveCfg = Debug|x64
+		{6991C43C-E51A-485F-B6DB-A5798C4FB4AE}.Debug|x64.Build.0 = Debug|x64
+		{6991C43C-E51A-485F-B6DB-A5798C4FB4AE}.Debug|x86.ActiveCfg = Release|x86
+		{6991C43C-E51A-485F-B6DB-A5798C4FB4AE}.Debug|x86.Build.0 = Release|x86
+		{6991C43C-E51A-485F-B6DB-A5798C4FB4AE}.Release|x64.ActiveCfg = Release|x64
+		{6991C43C-E51A-485F-B6DB-A5798C4FB4AE}.Release|x64.Build.0 = Release|x64
+		{6991C43C-E51A-485F-B6DB-A5798C4FB4AE}.Release|x86.ActiveCfg = Release|x86
+		{6991C43C-E51A-485F-B6DB-A5798C4FB4AE}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {898D582A-8564-4AB5-9ACE-20C827FCC540}
+	EndGlobalSection
+EndGlobal
