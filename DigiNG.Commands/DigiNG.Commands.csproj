@@ -108,11 +108,19 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Recursos.resx</DependentUpon>
     </Compile>
+    <Compile Include="Recursos.es.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Recursos.es.resx</DependentUpon>
+    </Compile>
     <Compile Include="UnirPolígonos.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <None Include="Recursos.es-ES.resx" />
+    <None Include="Recursos.es.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Recursos.es.Designer.cs</LastGenOutput>
+    </None>
     <EmbeddedResource Include="Recursos.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Recursos.Designer.cs</LastGenOutput>
@@ -120,8 +128,9 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>
-    </PostBuildEvent>
+    <PostBuildEvent>"C:\Program Files (x86)\Microsoft SDKs\Windows\v8.0A\Bin\NETFX 4.0 Tools\Resgen.exe" "$(ProjectDir)Recursos.es.resx" "$(TargetDir)$(ProjectName).Recursos.es.resources" 
+mkdir "$(TargetDir)es"
+"C:\Program Files (x86)\Microsoft SDKs\Windows\v8.0A\Bin\NETFX 4.0 Tools\Al.exe" /t:lib /embed:"$(TargetDir)$(ProjectName).Recursos.es.resources" /title:"$(ProjectName)" /version:2017.0.0.0 /culture:es /out:"$(TargetDir)es\$(ProjectName).resources.dll"</PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
     <PreBuildEvent>
