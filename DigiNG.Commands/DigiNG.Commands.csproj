@@ -61,20 +61,20 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Digi21.DigiNG, Version=17.0.0.0, Culture=neutral, PublicKeyToken=6751d7d8a775bb8c, processorArchitecture=x86">
-      <HintPath>..\packages\Digi21.DigiNG.x86.17.0.0\lib\net46\Digi21.DigiNG.dll</HintPath>
+    <Reference Include="Digi21.DigiNG, Version=17.0.0.0, Culture=neutral, PublicKeyToken=6751d7d8a775bb8c, processorArchitecture=AMD64">
+      <HintPath>..\packages\Digi21.DigiNG.x64.17.0.0\lib\net46\Digi21.DigiNG.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Digi21.DigiNG.Plugin, Version=17.0.0.0, Culture=neutral, PublicKeyToken=6751d7d8a775bb8c, processorArchitecture=x86">
-      <HintPath>..\packages\Digi21.DigiNG.Plugin.x86.17.0.0\lib\net46\Digi21.DigiNG.Plugin.dll</HintPath>
+    <Reference Include="Digi21.DigiNG.Plugin, Version=17.0.0.0, Culture=neutral, PublicKeyToken=6751d7d8a775bb8c, processorArchitecture=AMD64">
+      <HintPath>..\packages\Digi21.DigiNG.Plugin.x64.17.0.0\lib\net46\Digi21.DigiNG.Plugin.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Digi21.DigiNG.Topology, Version=17.0.0.0, Culture=neutral, PublicKeyToken=6751d7d8a775bb8c, processorArchitecture=x86">
-      <HintPath>..\packages\Digi21.DigiNG.Topology.x86.17.0.0\lib\net46\Digi21.DigiNG.Topology.dll</HintPath>
+    <Reference Include="Digi21.DigiNG.Topology, Version=17.0.0.0, Culture=neutral, PublicKeyToken=6751d7d8a775bb8c, processorArchitecture=AMD64">
+      <HintPath>..\packages\Digi21.DigiNG.Topology.x64.17.0.0\lib\net46\Digi21.DigiNG.Topology.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Digi21.Utilities, Version=2017.0.0.0, Culture=neutral, PublicKeyToken=6751d7d8a775bb8c, processorArchitecture=x86">
-      <HintPath>..\packages\Digi21.Utilities.x86.17.0.0\lib\net46\Digi21.Utilities.dll</HintPath>
+    <Reference Include="Digi21.Utilities, Version=2017.0.0.0, Culture=neutral, PublicKeyToken=6751d7d8a775bb8c, processorArchitecture=AMD64">
+      <HintPath>..\packages\Digi21.Utilities.x64.17.0.0\lib\net46\Digi21.Utilities.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
