@@ -41,7 +41,18 @@ namespace DigiNG.Commands.Operaciones_con_entidades
                 return;
             }
 
-            var límite = e.Entity as ReadOnlyLine;
+            ReadOnlyLine límite;
+            if( e.Entity is ReadOnlyLine )
+                límite = e.Entity as ReadOnlyLine;
+            else
+            {
+                // El límite es un polígono. Creamos una línea con el contorno exterior del límite
+                var polígono = e.Entity as ReadOnlyPolygon;
+
+                var temp = new Line(e.Entity.Codes);
+                temp.Points.Add(polígono.Points);
+                límite = temp;
+            }
 
             try
             {
@@ -71,7 +82,7 @@ namespace DigiNG.Commands.Operaciones_con_entidades
             if (entidadADividir == null)
                 Digi21.DigiNG.DigiNG.SelectEntity(e.Coordinates, entidad => Digi21.DigiNG.DigiNG.DrawingFile.Contains(entidad) && (entidad is ReadOnlyPolygon || entidad is ReadOnlyLine line && line.Closed));
             else
-                Digi21.DigiNG.DigiNG.SelectEntity(e.Coordinates, entidad => entidad is ReadOnlyLine);
+                Digi21.DigiNG.DigiNG.SelectEntity(e.Coordinates, entidad => entidad is ReadOnlyLine || entidad is ReadOnlyPolygon);
         }
 
         private void SolicitaSeleccionaEntidad()
