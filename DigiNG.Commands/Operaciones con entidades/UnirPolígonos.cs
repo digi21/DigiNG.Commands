@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 using Digi21.Digi3D;
@@ -40,9 +39,7 @@ namespace DigiNG.Commands
                 return;
             }
 
-            var listaErrores = new List<string>();
-
-            if (!entidadAUnir.CódigosIdénticos(e.Entity, listaErrores))
+            if (!entidadAUnir.CódigosIdénticos(e.Entity, null))
             {
                 MessageBox.Show(Recursos.LosCódigosDeLasEntidadesSonDistintosYPoLoTantoNoSePuedenUnir);
                 return;
