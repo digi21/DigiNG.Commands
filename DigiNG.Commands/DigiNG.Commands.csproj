@@ -38,7 +38,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
     <DebugSymbols>true</DebugSymbols>
-    <OutputPath>..\..\..\..\..\..\Program Files\Digi21.net\Digi3D.NET\Extensiones\</OutputPath>
+    <OutputPath>G:\Digi3D.NET\bin\v141\Debug\x64\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <DebugType>full</DebugType>
     <PlatformTarget>x64</PlatformTarget>
@@ -49,7 +49,7 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
-    <OutputPath>..\..\..\..\..\..\Program Files\Digi21.net\Digi3D.NET\Extensiones\</OutputPath>
+    <OutputPath>bin\Release\x64\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <Optimize>true</Optimize>
     <DebugType>pdbonly</DebugType>
@@ -61,20 +61,20 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Digi21.DigiNG, Version=17.0.0.0, Culture=neutral, PublicKeyToken=6751d7d8a775bb8c, processorArchitecture=AMD64">
-      <HintPath>..\packages\Digi21.DigiNG.x64.17.0.0\lib\net46\Digi21.DigiNG.dll</HintPath>
+    <Reference Include="Digi21.DigiNG, Version=17.0.0.0, Culture=neutral, PublicKeyToken=6751d7d8a775bb8c, processorArchitecture=x86">
+      <HintPath>..\packages\Digi21.DigiNG.x86.17.0.0\lib\net46\Digi21.DigiNG.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Digi21.DigiNG.Plugin, Version=17.0.0.0, Culture=neutral, PublicKeyToken=6751d7d8a775bb8c, processorArchitecture=AMD64">
-      <HintPath>..\packages\Digi21.DigiNG.Plugin.x64.17.0.0\lib\net46\Digi21.DigiNG.Plugin.dll</HintPath>
+    <Reference Include="Digi21.DigiNG.Plugin, Version=17.0.0.0, Culture=neutral, PublicKeyToken=6751d7d8a775bb8c, processorArchitecture=x86">
+      <HintPath>..\packages\Digi21.DigiNG.Plugin.x86.17.0.0\lib\net46\Digi21.DigiNG.Plugin.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Digi21.DigiNG.Topology, Version=17.0.0.0, Culture=neutral, PublicKeyToken=6751d7d8a775bb8c, processorArchitecture=AMD64">
-      <HintPath>..\packages\Digi21.DigiNG.Topology.x64.17.0.0\lib\net46\Digi21.DigiNG.Topology.dll</HintPath>
+    <Reference Include="Digi21.DigiNG.Topology, Version=17.0.1.0, Culture=neutral, PublicKeyToken=6751d7d8a775bb8c, processorArchitecture=x86">
+      <HintPath>..\packages\Digi21.DigiNG.Topology.x86.17.0.1\lib\net46\Digi21.DigiNG.Topology.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Digi21.Utilities, Version=2017.0.0.0, Culture=neutral, PublicKeyToken=6751d7d8a775bb8c, processorArchitecture=AMD64">
-      <HintPath>..\packages\Digi21.Utilities.x64.17.0.0\lib\net46\Digi21.Utilities.dll</HintPath>
+    <Reference Include="Digi21.Utilities, Version=2017.0.0.0, Culture=neutral, PublicKeyToken=6751d7d8a775bb8c, processorArchitecture=x86">
+      <HintPath>..\packages\Digi21.Utilities.x86.17.0.0\lib\net46\Digi21.Utilities.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="System" />
@@ -91,6 +91,7 @@
     <Compile Include="Códigos\CambCodManteniendoAtributos.cs" />
     <Compile Include="Códigos\CopiarNombreCódigo.cs" />
     <Compile Include="Códigos\CopiarTablaRegistro.cs" />
+    <Compile Include="Códigos\SustituyeAtributosBBDD.cs" />
     <Compile Include="DetectaLíneasPerímetroInferiorAValor.cs" />
     <Compile Include="DetectarUndershoot.cs" />
     <Compile Include="Modelo de datos\EliminarEntidadesAreaPequeña.cs" />

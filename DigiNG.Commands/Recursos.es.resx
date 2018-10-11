@@ -252,4 +252,13 @@
   <data name="UnirPolígonosTitle" xml:space="preserve">
     <value>Unir polígonos</value>
   </data>
+  <data name="SustituirAtributosBBDDName" xml:space="preserve">
+    <value>sustituye_atributos_bbdd</value>
+  </data>
+  <data name="SustituirAtributosBBDDTitle" xml:space="preserve">
+    <value>Sustituir atributos de base de datos</value>
+  </data>
+  <data name="DebesEspecificarElNombreDeLosCamposASustituir" xml:space="preserve">
+    <value>Debes especificar mediante parámetros los nombres de los campos a sustituir</value>
+  </data>
 </root>

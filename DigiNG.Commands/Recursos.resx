@@ -249,4 +249,13 @@
   <data name="UnirPolígonosTitle" xml:space="preserve">
     <value>Join polygons</value>
   </data>
+  <data name="SustituirAtributosBBDDName" xml:space="preserve">
+    <value>replace_ddbb_attributes</value>
+  </data>
+  <data name="SustituirAtributosBBDDTitle" xml:space="preserve">
+    <value>Replace database attributes</value>
+  </data>
+  <data name="DebesEspecificarElNombreDeLosCamposASustituir" xml:space="preserve">
+    <value>You must specify by means of parameters the names of the fields to replace.</value>
+  </data>
 </root>
