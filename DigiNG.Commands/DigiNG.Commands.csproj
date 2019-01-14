@@ -73,8 +73,8 @@
       <HintPath>..\packages\Digi21.DigiNG.Topology.x86.17.0.1\lib\net46\Digi21.DigiNG.Topology.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Digi21.Utilities, Version=2017.0.0.0, Culture=neutral, PublicKeyToken=6751d7d8a775bb8c, processorArchitecture=x86">
-      <HintPath>..\packages\Digi21.Utilities.x86.17.0.0\lib\net46\Digi21.Utilities.dll</HintPath>
+    <Reference Include="Digi21.Utilities, Version=2017.0.1.0, Culture=neutral, PublicKeyToken=6751d7d8a775bb8c, processorArchitecture=x86">
+      <HintPath>..\packages\Digi21.Utilities.x86.17.0.1\lib\net46\Digi21.Utilities.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="System" />
@@ -128,7 +128,9 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
