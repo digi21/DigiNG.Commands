@@ -4,7 +4,7 @@ using System.Windows.Forms;
 using Digi21.Digi3D;
 using Digi21.DigiNG.Entities;
 using Digi21.DigiNG.Plugin.Command;
-using Digi21.DigiNG.Plugin.Shell;
+using Digi21.DigiNG.Plugin.Menu;
 using Digi21.Math;
 
 namespace DigiNG.Commands.Códigos
@@ -62,7 +62,7 @@ namespace DigiNG.Commands.Códigos
                 EliminaEnlacesABBDD(entidadClonada);
 
                 Digi21.DigiNG.DigiNG.DrawingFile.Add(entidadClonada,
-                    entidadOrigen.Owner.get_DatabaseAttributes(entidadOrigen));
+                entidadOrigen.Owner.GetDatabaseAttributes(entidadOrigen));
                 Digi3D.Music(MusicType.EndOfLongProcess);
                 Digi21.DigiNG.DigiNG.DrawingFile.Delete(e.Entity);
             }

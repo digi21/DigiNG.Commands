@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Digi21.Digi3D;
-using Digi21.DigiNG;
+using Digi21.DigiNG.Plugin.TaskPanel;
 using Digi21.DigiNG.Entities;
 using Digi21.DigiNG.Plugin.Command;
 using Digi21.DigiNG.Topology;

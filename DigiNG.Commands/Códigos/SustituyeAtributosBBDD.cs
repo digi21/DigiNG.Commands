@@ -1,7 +1,7 @@
 ﻿using Digi21.Digi3D;
 using Digi21.DigiNG.Entities;
 using Digi21.DigiNG.Plugin.Command;
-using Digi21.DigiNG.Plugin.Shell;
+using Digi21.DigiNG.Plugin.Menu;
 using Digi21.Math;
 using System;
 using System.Linq;
@@ -54,8 +54,8 @@ namespace DigiNG.Commands.Códigos
                 return;
             }
 
-            var atributosOrigen = entidadOrigen.Owner.get_DatabaseAttributes(entidadOrigen)[entidadOrigen.Codes[0].Name];
-            var atributosDestino = entidadOrigen.Owner.get_DatabaseAttributes(e.Entity);
+            var atributosOrigen = entidadOrigen.Owner.GetDatabaseAttributes(entidadOrigen)[entidadOrigen.Codes[0].Name];
+            var atributosDestino = entidadOrigen.Owner.GetDatabaseAttributes(e.Entity);
 
             foreach(var campo in Args)
             {

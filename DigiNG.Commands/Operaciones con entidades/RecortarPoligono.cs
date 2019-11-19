@@ -3,7 +3,7 @@ using System.Linq;
 using Digi21.Digi3D;
 using Digi21.DigiNG.Entities;
 using Digi21.DigiNG.Plugin.Command;
-using Digi21.DigiNG.Plugin.Shell;
+using Digi21.DigiNG.Plugin.Menu;
 using Digi21.Math;
 
 namespace DigiNG.Commands.Operaciones_con_entidades
@@ -56,7 +56,7 @@ namespace DigiNG.Commands.Operaciones_con_entidades
 
             try
             {
-                var polígonos = ((ITrimable)entidadADividir).Trim(límite);
+                var polígonos = ((ITrimable)entidadADividir).Trim(límite, true);
                 Digi21.DigiNG.DigiNG.DrawingFile.Add(polígonos);
                 Digi21.DigiNG.DigiNG.DrawingFile.Delete(entidadADividir);
 
