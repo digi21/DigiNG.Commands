@@ -40,7 +40,7 @@ namespace DigiNG.Commands.Operaciones_con_entidades
                 foreach (var línea in líneasATransformar)
                 {
                     var polígono = new Polygon(línea.Codes);
-                    polígono.Points.Add(línea.Points);
+                    polígono.Points.AddRange(línea.Points);
                     polígonos.Add(polígono);
                 }
 

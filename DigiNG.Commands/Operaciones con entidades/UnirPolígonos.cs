@@ -55,7 +55,7 @@ namespace DigiNG.Commands
                 if (entidadAUnir is ReadOnlyLine && e.Entity is ReadOnlyLine && 0 == polígono.Holes.Count)
                 {
                     var temp = new Line(polígono.Codes);
-                    temp.Points.Add(polígono.Points);
+                    temp.Points.AddRange(polígono.Points);
                     entidadAAñadir = temp;
                 }
 

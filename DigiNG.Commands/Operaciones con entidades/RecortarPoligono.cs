@@ -1,10 +1,10 @@
 ﻿using System;
-using System.Linq;
 using Digi21.Digi3D;
 using Digi21.DigiNG.Entities;
 using Digi21.DigiNG.Plugin.Command;
 using Digi21.DigiNG.Plugin.Menu;
 using Digi21.Math;
+using Digi21.Utilities;
 
 namespace DigiNG.Commands.Operaciones_con_entidades
 {
@@ -50,7 +50,7 @@ namespace DigiNG.Commands.Operaciones_con_entidades
                 var polígono = e.Entity as ReadOnlyPolygon;
 
                 var temp = new Line(e.Entity.Codes);
-                temp.Points.Add(polígono.Points);
+                temp.Points.AddRange(polígono.Points);
                 límite = temp;
             }
 
