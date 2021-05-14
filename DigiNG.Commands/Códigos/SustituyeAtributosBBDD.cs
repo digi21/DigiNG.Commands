@@ -54,35 +54,21 @@ namespace DigiNG.Commands.Códigos
                 return;
             }
 
-            var atributosOrigen = entidadOrigen.Owner.GetDatabaseAttributes(entidadOrigen)[entidadOrigen.Codes[0].Name];
-            var atributosDestino = entidadOrigen.Owner.GetDatabaseAttributes(e.Entity);
+            var entidadClonada = e.Entity.Clone();
 
-            foreach(var campo in Args)
+            for (var i = 0; i < entidadClonada.Codes.Count; i++)
             {
-                if( !atributosOrigen.ContainsKey(campo))
-                    continue;
-
-                atributosDestino[entidadOrigen.Codes[0].Name][campo] = atributosOrigen[campo];
+                entidadClonada.Codes[i] = new Code(entidadOrigen.Codes[i].Name);
+                foreach(var tupla in entidadOrigen.Codes[i].Attributes)
+                    entidadClonada.Codes[i].Attributes[tupla.Key] = tupla.Value;
             }
 
-            var entidadClonada = e.Entity.Clone();
-            EliminaEnlacesABBDD(entidadClonada);
-
-            Digi21.DigiNG.DigiNG.DrawingFile.Add(entidadClonada, atributosDestino);
+            Digi21.DigiNG.DigiNG.DrawingFile.Add(entidadClonada);
             Digi21.DigiNG.DigiNG.DrawingFile.Delete(e.Entity);
             Digi3D.Music(MusicType.EndOfLongProcess);
 
             entidadOrigen = null;
             SolicitaSeleccionarEntidad();
-        }
-
-        private static void EliminaEnlacesABBDD(Entity entidadClonada)
-        {
-            // Eliminamos los enlaces a BBDD de los distintos códigos para asegurarnos de que al añadir la entidad se generan altas nuevas. No queremos que los códigos 
-            // apunten a los registros a los que están apuntando, queremos altas nuevas, porque puede incluso que la entidad de la cual estamos obteniendo los atributos 
-            // ni siquiera pertenezca al archivo de dibujo activo.
-            for (var i = 0; i < entidadClonada.Codes.Count; i++)
-                entidadClonada.Codes[i] = new Code(entidadClonada.Codes[i].Name);
         }
 
         private void CopiarAtributosBBDD_DataUp(object sender, Point3DEventArgs e)

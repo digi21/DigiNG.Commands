@@ -61,8 +61,7 @@ namespace DigiNG.Commands.Códigos
 
                 EliminaEnlacesABBDD(entidadClonada);
 
-                Digi21.DigiNG.DigiNG.DrawingFile.Add(entidadClonada,
-                entidadOrigen.Owner.GetDatabaseAttributes(entidadOrigen));
+                Digi21.DigiNG.DigiNG.DrawingFile.Add(entidadClonada);
                 Digi3D.Music(MusicType.EndOfLongProcess);
                 Digi21.DigiNG.DigiNG.DrawingFile.Delete(e.Entity);
             }
