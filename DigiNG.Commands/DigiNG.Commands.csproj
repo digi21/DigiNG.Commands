@@ -90,22 +90,18 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Digi21.Utilities\Digi21.Utilities\Digi21.Utilities.csproj">
-      <Project>{9f541c36-746d-4e06-899d-48332256d181}</Project>
-      <Name>Digi21.Utilities</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\digi21\Digi3D.NET\Progsh\src\Digi21.DigiNG.Plugin\Digi21.DigiNG.Plugin.vcxproj">
-      <Project>{897f6a51-df51-4ac6-7411-6083824a5985}</Project>
-      <Name>Digi21.DigiNG.Plugin</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\digi21\Digi3D.NET\Progsh\src\Digi21.DigiNG.Topology\Digi21.DigiNG.Topology.vcxproj">
-      <Project>{0b03bd59-e4c8-a850-469b-61889767797c}</Project>
-      <Name>Digi21.DigiNG.Topology</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\digi21\Digi3D.NET\Progsh\src\Digi21.DigiNG\Digi21.DigiNG.vcxproj">
-      <Project>{efd60fa9-0e03-e1c7-babd-4cb3223002e5}</Project>
-      <Name>Digi21.DigiNG</Name>
-    </ProjectReference>
+    <PackageReference Include="Digi21.DigiNG">
+      <Version>22.0.0</Version>
+    </PackageReference>
+    <PackageReference Include="Digi21.DigiNG.Plugin">
+      <Version>22.0.0</Version>
+    </PackageReference>
+    <PackageReference Include="Digi21.DigiNG.Topology">
+      <Version>22.0.0</Version>
+    </PackageReference>
+    <PackageReference Include="Digi21.Utilities">
+      <Version>22.0.0</Version>
+    </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
