@@ -16,7 +16,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
     <DebugSymbols>true</DebugSymbols>
-    <OutputPath>..\..\Digi3D.NET\bin\v141\Debug\x64\</OutputPath>
+    <OutputPath>..\..\Digi3D.NET\bin\v143\Debug\x64\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <DebugType>full</DebugType>
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -24,6 +24,7 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
     <CodeAnalysisIgnoreBuiltInRuleSets>false</CodeAnalysisIgnoreBuiltInRuleSets>
     <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
     <OutputPath>bin\Release\</OutputPath>
@@ -35,6 +36,9 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
     <CodeAnalysisIgnoreBuiltInRuleSets>false</CodeAnalysisIgnoreBuiltInRuleSets>
     <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -72,18 +76,18 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Recursos.resx</DependentUpon>
     </Compile>
-    <Compile Include="Recursos.es.Designer.cs">
+    <Compile Include="Recursos.es-ES.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Recursos.es.resx</DependentUpon>
+      <DependentUpon>Recursos.es-ES.resx</DependentUpon>
     </Compile>
     <Compile Include="Operaciones con entidades\UnirPolígonos.cs" />
     <Compile Include="SuperBininfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Recursos.es.resx">
+    <EmbeddedResource Include="Recursos.es-ES.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Recursos.es.Designer.cs</LastGenOutput>
+      <LastGenOutput>Recursos.es-ES.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Recursos.resx">
       <Generator>ResXFileCodeGenerator</Generator>
