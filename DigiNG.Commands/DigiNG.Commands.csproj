@@ -1,38 +1,19 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>8.0.30703</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{6991C43C-E51A-485F-B6DB-A5798C4FB4AE}</ProjectGuid>
+    <TargetFramework>net7.0</TargetFramework>
     <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DigiNG.Commands</RootNamespace>
-    <AssemblyName>DigiNG.Commands</AssemblyName>
-    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImportWindowsDesktopTargets>true</ImportWindowsDesktopTargets>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
-    <DebugSymbols>true</DebugSymbols>
     <OutputPath>..\..\Digi3D.NET\bin\v143\Debug\x64\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <DebugType>full</DebugType>
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
     <CodeAnalysisIgnoreBuiltInRuleSets>false</CodeAnalysisIgnoreBuiltInRuleSets>
     <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
     <UseVSHostingProcess>false</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <Optimize>true</Optimize>
-    <DebugType>pdbonly</DebugType>
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
     <CodeAnalysisIgnoreBuiltInRuleSets>false</CodeAnalysisIgnoreBuiltInRuleSets>
     <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
@@ -41,91 +22,24 @@
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
+    <ProjectReference Include="..\..\Digi21.Utilities\Digi21.Utilities\Digi21.Utilities.csproj" />
+    <ProjectReference Include="..\..\Digi3D.NET\Progsh\src\Digi21.DigiNG.Plugin\Digi21.DigiNG.Plugin.vcxproj" />
+    <ProjectReference Include="..\..\Digi3D.NET\Progsh\src\Digi21.DigiNG.Topology\Digi21.DigiNG.Topology.vcxproj" />
+    <ProjectReference Include="..\..\Digi3D.NET\Progsh\src\Digi21.DigiNG\Digi21.DigiNG.vcxproj" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Códigos\CopiarAtributosBBDD.cs" />
-    <Compile Include="Códigos\CambCodManteniendoAtributos.cs" />
-    <Compile Include="Códigos\CopiarNombreCódigo.cs" />
-    <Compile Include="Códigos\CopiarTablaRegistro.cs" />
-    <Compile Include="Códigos\SustituyeAtributosBBDD.cs" />
-    <Compile Include="DetectaLíneasPerímetroInferiorAValor.cs" />
-    <Compile Include="DetectarUndershoot.cs" />
-    <Compile Include="Modelo de datos\EliminarEntidadesAreaPequeña.cs" />
-    <Compile Include="Modelo de datos\SustituirOEliminarEntidadesPorArea.cs" />
-    <Compile Include="Operaciones con entidades\LineaAPolígono.cs" />
-    <Compile Include="Operaciones con entidades\Cortar.cs" />
-    <Compile Include="Operaciones con entidades\CortarPoligono.cs" />
-    <Compile Include="Operaciones con entidades\PartirPoligonos.cs" />
-    <Compile Include="Operaciones con entidades\RecortarPoligono.cs" />
-    <Compile Include="Operaciones con entidades\RecortarPoligonos.cs" />
-    <Compile Include="Operaciones con entidades\RecuperarGeometriasPorFecha.cs" />
-    <Compile Include="Operaciones con entidades\TramificaInsertandoEntidadSeleccionada.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Modelo de datos\SustituyeAreaPorPuntual.cs" />
-    <Compile Include="Recursos.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Recursos.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Recursos.es-ES.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Recursos.es-ES.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Operaciones con entidades\UnirPolígonos.cs" />
-    <Compile Include="SuperBininfo.cs" />
+    <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
+    <PackageReference Include="System.Data.DataSetExtensions" Version="4.5.0" />
   </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Recursos.es-ES.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Recursos.es-ES.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Recursos.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Recursos.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\Digi21.Utilities\Digi21.Utilities\Digi21.Utilities.csproj">
-      <Project>{9f541c36-746d-4e06-899d-48332256d181}</Project>
-      <Name>Digi21.Utilities</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Digi3D.NET\Progsh\src\Digi21.DigiNG.Plugin\Digi21.DigiNG.Plugin.vcxproj">
-      <Project>{897f6a51-df51-4ac6-7411-6083824a5985}</Project>
-      <Name>Digi21.DigiNG.Plugin</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Digi3D.NET\Progsh\src\Digi21.DigiNG.Topology\Digi21.DigiNG.Topology.vcxproj">
-      <Project>{0b03bd59-e4c8-a850-469b-61889767797c}</Project>
-      <Name>Digi21.DigiNG.Topology</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Digi3D.NET\Progsh\src\Digi21.DigiNG\Digi21.DigiNG.vcxproj">
-      <Project>{efd60fa9-0e03-e1c7-babd-4cb3223002e5}</Project>
-      <Name>Digi21.DigiNG</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup />
   <PropertyGroup>
-    <PostBuildEvent>
-    </PostBuildEvent>
+    <AssemblyTitle>DigiNG.Commands</AssemblyTitle>
+    <Description>Implementa órdenes para Digi3D.NET</Description>
+    <Company>Dreaming With Objects S.L.</Company>
+    <Product>DigiNG.Commands</Product>
+    <Copyright>Copyright © 2010-2021 José Ángel Martínez Torres</Copyright>
+    <AssemblyVersion>22.0.0.0</AssemblyVersion>
+    <FileVersion>22.0.0.0</FileVersion>
+    <NeutralLanguage>en-US</NeutralLanguage>
   </PropertyGroup>
-  <PropertyGroup>
-    <PreBuildEvent>
-    </PreBuildEvent>
-  </PropertyGroup>
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
 </Project>
