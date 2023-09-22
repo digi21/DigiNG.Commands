@@ -26,16 +26,22 @@
   <PropertyGroup>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\Digi21.Utilities\Digi21.Utilities\Digi21.Utilities.csproj" />
-    <ProjectReference Include="..\..\Digi3D.NET\Progsh\src\Digi21.DigiNG.Plugin\Digi21.DigiNG.Plugin.vcxproj" />
-    <ProjectReference Include="..\..\Digi3D.NET\Progsh\src\Digi21.DigiNG.Topology\Digi21.DigiNG.Topology.vcxproj" />
-    <ProjectReference Include="..\..\Digi3D.NET\Progsh\src\Digi21.DigiNG\Digi21.DigiNG.vcxproj" />
-  </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
-    <PackageReference Include="System.Data.DataSetExtensions" Version="4.5.0" />
-  </ItemGroup>
+	<ItemGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+		<PackageReference Include="Digi21.DigiNG" Version="23.2.0" />
+		<PackageReference Include="Digi21.DigiNG.Plugin" Version="23.2.0" />
+		<PackageReference Include="Digi21.DigiNG.Topology" Version="23.2.0" />
+		<PackageReference Include="Digi21.Utilities" Version="23.2.0" />
+	</ItemGroup>
+	<ItemGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+		<ProjectReference Include="..\..\Digi21.Utilities\Digi21.Utilities\Digi21.Utilities.csproj" />
+		<ProjectReference Include="..\..\Digi3D.NET\Progsh\src\Digi21.DigiNG.Plugin\Digi21.DigiNG.Plugin.vcxproj" />
+		<ProjectReference Include="..\..\Digi3D.NET\Progsh\src\Digi21.DigiNG.Topology\Digi21.DigiNG.Topology.vcxproj" />
+		<ProjectReference Include="..\..\Digi3D.NET\Progsh\src\Digi21.DigiNG\Digi21.DigiNG.vcxproj" />
+	</ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
+		<PackageReference Include="System.Data.DataSetExtensions" Version="4.5.0" />
+	</ItemGroup>
   <PropertyGroup />
   <PropertyGroup>
     <AssemblyTitle>DigiNG.Commands</AssemblyTitle>
