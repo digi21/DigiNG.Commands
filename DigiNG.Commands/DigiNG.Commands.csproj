@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net7.0-windows</TargetFramework>
+    <TargetFramework>net8.0-windows10.0.17763.0</TargetFramework>
     <OutputType>Library</OutputType>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <UseWindowsForms>true</UseWindowsForms>
@@ -27,10 +27,10 @@
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
 	<ItemGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
-		<PackageReference Include="Digi21.DigiNG" Version="23.2.0" />
-		<PackageReference Include="Digi21.DigiNG.Plugin" Version="23.2.0" />
-		<PackageReference Include="Digi21.DigiNG.Topology" Version="23.2.0" />
-		<PackageReference Include="Digi21.Utilities" Version="23.2.0" />
+		<PackageReference Include="Digi21.DigiNG" Version="24.0.0" />
+		<PackageReference Include="Digi21.DigiNG.Plugin" Version="24.0.0" />
+		<PackageReference Include="Digi21.DigiNG.Topology" Version="24.0.0" />
+		<PackageReference Include="Digi21.Utilities" Version="24.0.0" />
 	</ItemGroup>
 	<ItemGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
 		<ProjectReference Include="..\..\Digi21.Utilities\Digi21.Utilities\Digi21.Utilities.csproj" />
