@@ -2,7 +2,7 @@
 using System.Linq;
 using Digi21.Digi3D;
 using Digi21.DigiNG.Plugin.Command;
-using ng = Digi21.DigiNG.DigiNG;
+using NG = Digi21.DigiNG.DigiNG;
 
 namespace DigiNG.Commands.Operaciones_con_entidades
 {
@@ -12,7 +12,7 @@ namespace DigiNG.Commands.Operaciones_con_entidades
         public RecuperarGeometriasPorFecha()
         {
             SetFocus += (_, e) => Digi3D.StatusBar.Text = "Selecciona geometría con la fecha de creación que quieres recuperar...";
-            DataUp += (_, e) => ng.SelectEntity(e.Coordinates);
+            DataUp += (_, e) => NG.SelectEntity(e.Coordinates);
             EntitySelected += RecuperarGeometriasPorFecha_EntitySelected;
         }
 
@@ -25,14 +25,14 @@ namespace DigiNG.Commands.Operaciones_con_entidades
         private static void RecuperaGeometríasConFecha(DateTime fechaCreación)
         {
             var geometríasRecuperar =
-                (from entidad in ng.DrawingFile
+                (from entidad in NG.DrawingFile
                     where entidad.Deleted
                     where entidad.CreationTime == fechaCreación
                     select entidad).ToList();
 
             if (geometríasRecuperar.Count > 0)
             {
-                ng.DrawingFile.Undelete(geometríasRecuperar);
+                NG.DrawingFile.Undelete(geometríasRecuperar);
                 Digi3D.Music(MusicType.EndOfLongProcess);
                 Digi3D.ShowBallon("Recuperar geometrías por fecha",
                     $"Se han recuperado {geometríasRecuperar.Count} geometrías", 3);

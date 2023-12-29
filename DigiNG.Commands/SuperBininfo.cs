@@ -8,7 +8,7 @@ using Digi21.DigiNG.IO;
 using Digi21.DigiNG.Plugin.Command;
 using Digi21.Math;
 using Digi21.Utilities;
-using ng = Digi21.DigiNG.DigiNG;
+using NG = Digi21.DigiNG.DigiNG;
 
 namespace DigiNG.Commands
 {
@@ -24,8 +24,8 @@ namespace DigiNG.Commands
         {
             Digi3D.OutputWindow.Show();
 
-            MuestraParametrosArchivo(ng.DrawingFile);
-            foreach (var archivo in ng.ReferenceFiles)
+            MuestraParametrosArchivo(NG.DrawingFile);
+            foreach (var archivo in NG.ReferenceFiles)
                 MuestraParametrosArchivo(archivo);
 
             Dispose();
