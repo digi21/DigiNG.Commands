@@ -13,5 +13,6 @@ using System.Runtime.Versioning;
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
 [assembly: Guid("32c90018-62ed-4e56-b000-1deb8f0a5c16")]
+
 [assembly: SupportedOSPlatform("windows")]
 

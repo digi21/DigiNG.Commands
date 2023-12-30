@@ -30,8 +30,6 @@
 		<PackageReference Include="Digi21.DigiNG.Plugin" Version="24.0.0" />
 		<PackageReference Include="Digi21.DigiNG.Topology" Version="24.0.0" />
 		<PackageReference Include="Digi21.Utilities" Version="24.0.0" />
-		<PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
-		<PackageReference Include="System.Data.DataSetExtensions" Version="4.5.0" />
 	</ItemGroup>
 	<ItemGroup>
 	  <Compile Update="Properties\Settings.Designer.cs">
@@ -57,5 +55,6 @@
     <FileVersion>22.0.0.0</FileVersion>
     <NeutralLanguage>en-US</NeutralLanguage>
     <BaseOutputPath>$(SolutionDir)bin\</BaseOutputPath>
+    <Version>22.0.0</Version>
   </PropertyGroup>
 </Project>
