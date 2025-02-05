@@ -30,8 +30,8 @@
   </PropertyGroup>
 	<ItemGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
 		<PackageReference Include="Digi21.DigiNG.Plugin" Version="24.0.0" />
-		<PackageReference Include="Digi21.DigiNG.Topology" Version="24.0.0" />
-		<PackageReference Include="Digi21.Utilities" Version="24.0.0" />
+		<PackageReference Include="Digi21.DigiNG.Topology" Version="24.0.1" />
+		<PackageReference Include="Digi21.Utilities" Version="24.0.1" />
 	</ItemGroup>
 	<ItemGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
 		<ProjectReference Include="..\..\Digi21.Utilities\Digi21.Utilities\Digi21.Utilities.csproj" />
