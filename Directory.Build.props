@@ -1,0 +1,15 @@
+<Project>
+  <!--
+    Degradamos a mensaje (no aviso) advertencias inherentes a la solución mixta
+    nativa/gestionada, que no representan un problema real:
+      MSB3270  Arquitectura MSIL (AnyCPU) de este proyecto gestionado frente a las
+               referencias nativas AMD64: es por diseño; el JIT adapta el ensamblado.
+      MSB3277  Ensamblados del framework .NET 8 (Microsoft.VisualBasic, mscorlib, System...)
+               que RAR encuentra por dos rutas de resolución con versión IDÉNTICA en las
+               soluciones mixtas C# + C++/CLI (/clr:netcore) y no puede declarar ganador.
+               No hay conflicto de versión real; es benigno.
+  -->
+  <PropertyGroup>
+    <MSBuildWarningsAsMessages>$(MSBuildWarningsAsMessages);MSB3270;MSB3277</MSBuildWarningsAsMessages>
+  </PropertyGroup>
+</Project>
