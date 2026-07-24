@@ -12,4 +12,26 @@
   <PropertyGroup>
     <MSBuildWarningsAsMessages>$(MSBuildWarningsAsMessages);MSB3270;MSB3277</MSBuildWarningsAsMessages>
   </PropertyGroup>
+
+  <!--
+    obj\ POR CONFIGURACIÓN (evita el ping-pong del swap ProjectReference/PackageReference).
+
+    Este proyecto referencia el código fuente local (ProjectReference) en Debug y los
+    paquetes NuGet publicados (PackageReference) en Release, condicionado por $(Configuration).
+    Pero NuGet escribe UN solo project.assets.json en $(MSBuildProjectExtensionsPath) (obj\ por
+    defecto), sin distinguir configuración: al restaurar una config se machaca el grafo de la otra
+    (restaurar Debug mete las ProjectReference y el build Release no encuentra los paquetes; al
+    revés, el NuGet se cuela en Debug y da CS0121 «ambiguous» contra la DLL local).
+
+    Dándole a cada configuración su propio obj\<Config>\, restore y build de cada una usan su
+    assets.json independiente y las condiciones Debug/Release dejan de pisarse.
+
+    Se fija en Directory.Build.props (importado por Microsoft.Common.props ANTES del import de los
+    .g.props de NuGet) y se predefine Configuration para que la ruta sea válida aunque MSBuild/NuGet
+    se invoque sin /p:Configuration explícito.
+  -->
+  <PropertyGroup>
+    <Configuration Condition="'$(Configuration)' == ''">Debug</Configuration>
+    <MSBuildProjectExtensionsPath>$(MSBuildProjectDirectory)\obj\$(Configuration)\</MSBuildProjectExtensionsPath>
+  </PropertyGroup>
 </Project>
