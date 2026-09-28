@@ -34,7 +34,8 @@
 	<ItemGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
 		<PackageReference Include="Digi21.DigiNG.Plugin" Version="26.0.0" />
 		<PackageReference Include="Digi21.DigiNG.Topology" Version="26.0.0" />
-		<PackageReference Include="Digi21.Utilities" Version="26.0.0" />
+		<!-- Solo para compilar: la Digi21.Utilities.dll de la salida es la que compila la solución. -->
+		<PackageReference Include="Digi21.Utilities" Version="26.0.0" ExcludeAssets="runtime" />
 	</ItemGroup>
 	<ItemGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
 		<ProjectReference Include="..\..\Digi21.Utilities\Digi21.Utilities\Digi21.Utilities.csproj" />
