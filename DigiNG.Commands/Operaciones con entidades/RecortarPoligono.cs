@@ -60,8 +60,9 @@ namespace DigiNG.Commands.Operaciones_con_entidades
                 Digi21.DigiNG.DigiNG.DrawingFile.Add(polígonos);
                 Digi21.DigiNG.DigiNG.DrawingFile.Delete(entidadADividir);
 
-                if (Args.Length != 0 && Digi21.DigiNG.DigiNG.DrawingFile.Contains(límite))
-                    Digi21.DigiNG.DigiNG.DrawingFile.Delete(límite);
+                // Si el límite es un polígono, límite es una Line temporal: se borra la entidad seleccionada.
+                if (Args.Length != 0 && Digi21.DigiNG.DigiNG.DrawingFile.Contains(e.Entity))
+                    Digi21.DigiNG.DigiNG.DrawingFile.Delete(e.Entity);
             }
             catch (Exception ex)
             {
