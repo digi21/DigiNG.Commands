@@ -198,6 +198,9 @@
   <data name="SeleccionaLaLíneaDeCorte" xml:space="preserve">
     <value>Selecciona la línea de corte</value>
   </data>
+  <data name="LaLíneaNoDivideElPolígono" xml:space="preserve">
+    <value>La línea no divide el polígono en dos o más polígonos.</value>
+  </data>
   <data name="SeleccionaLaLíneaLímite" xml:space="preserve">
     <value>Selecciona la línea de límite</value>
   </data>

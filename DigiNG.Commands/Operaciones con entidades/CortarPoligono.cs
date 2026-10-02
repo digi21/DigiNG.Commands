@@ -45,7 +45,15 @@ namespace DigiNG.Commands.Operaciones_con_entidades
 
             try
             {
-                var polígonos = ((IClippable)entidadADividir).Clip(límite);
+                // Clip devuelve una lista vacía si la línea no corta el polígono o si solo sale un polígono.
+                var polígonos = ((IClippable)entidadADividir).Clip(límite).ToList();
+                if (polígonos.Count == 0)
+                {
+                    Digi3D.Music(MusicType.Error);
+                    Digi3D.ShowBallon(Recursos.CortarPoligonoName, Recursos.LaLíneaNoDivideElPolígono, 2);
+                    return;
+                }
+
                 Digi21.DigiNG.DigiNG.DrawingFile.Add(polígonos);
                 Digi21.DigiNG.DigiNG.DrawingFile.Delete(entidadADividir);
 

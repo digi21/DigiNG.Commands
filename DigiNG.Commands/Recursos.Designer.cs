@@ -401,6 +401,15 @@ namespace DigiNG.Commands {
                 return ResourceManager.GetString("SeleccionaLaLíneaDeCorte", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   Looks up a localized string similar to The line does not divide the polygon into two or more polygons..
+        /// </summary>
+        internal static string LaLíneaNoDivideElPolígono {
+            get {
+                return ResourceManager.GetString("LaLíneaNoDivideElPolígono", resourceCulture);
+            }
+        }
         
         /// <summary>
         ///   Looks up a localized string similar to Select the limit line.
